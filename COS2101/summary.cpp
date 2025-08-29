@@ -10,7 +10,9 @@ int main (  )
   int x,y,z;
   
  }
-void pass_val ( int l , double &y)
+
+//pass by value , pass by reference
+void pass_val ( int l , double &y) 
 {
     l = l*2;  y = y+2;
     cout << "\nl = " << l; 
