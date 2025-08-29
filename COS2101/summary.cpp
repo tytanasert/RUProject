@@ -8,8 +8,11 @@ float g =  15.5; //global value
 int main (  )
  {
   int x,y,z;
-  
+  //cast
+  Double(1);
  }
+
+
 
 //pass by value , pass by reference
 void pass_val ( int l , double &y) 
