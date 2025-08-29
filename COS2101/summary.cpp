@@ -3,13 +3,19 @@
 using namespace std;
 int get_value_ten ();    // prototype for print_title function
 int get_value_two ();
-
+float g =  15.5; //global value
 
 int main (  )
  {
   int x,y,z;
   
  }
+void pass_val ( int l , double &y)
+{
+    l = l*2;  y = y+2;
+    cout << "\nl = " << l; 
+    cout << "\ny = " << y ;
+}
 
 void scope(){
  int x=10,y=20,z=30;
