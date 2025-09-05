@@ -8,6 +8,10 @@
 
 *******************************************************************************/
 
+
+
+
+
 #include <iostream>
 #include <cstring>
 using namespace std;
@@ -34,7 +38,7 @@ int main()
     while(true)
     {
         cout<<"1.get student info" << endl;
-        cout<<"2.compute average age " << endl;
+        // cout<<"2.compute average age " << endl;
         cout<<"3.exit " << endl;
         cin >> choice;
         if( choice==3) {
