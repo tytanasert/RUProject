@@ -9,7 +9,7 @@ int main (  )
  {
   int x,y,z;
   //cast
-  Double(1);
+//   Double(1);
  }
 
 
