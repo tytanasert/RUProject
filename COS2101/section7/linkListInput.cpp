@@ -56,11 +56,11 @@ int main(){
     delete(p);
     
     /* output
-            p 				 d 		x  		y  		next  
+            p 				 d 		x  		    y  		        next  
         0x117f02b0 			 p 		10  		20  		0x117f02d0  
         0x117f02d0 			 b 		11  		21  		0x117f02f0  
         0x117f02f0 			 c 		12  		22  		0x117f0310  
-        0x117f0310 			 d 		13  		23  		(nil)  
+        0x117f0310 			 d 		13  		23  		(nil)   
     */
     return 0;
 }
