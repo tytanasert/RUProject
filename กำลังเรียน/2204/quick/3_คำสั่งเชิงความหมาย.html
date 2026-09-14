@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>บทที่ 3 — คำสั่งเชิงความหมาย | COS2204 quick reference</title>
+<style>
+  :root { --accent:#0d9488; --code-bg:#1e1e2e; --line:#e2e8f0; }
+  * { box-sizing:border-box; }
+  body { font-family:-apple-system,"Segoe UI","Sarabun",Tahoma,sans-serif;
+         line-height:1.7; color:#1e293b; max-width:920px; margin:0 auto; padding:24px; background:#fff; }
+  h1 { font-size:1.7rem; border-bottom:3px solid var(--accent); padding-bottom:8px; margin-bottom:4px; }
+  h1 + p.sub { color:#64748b; margin-top:0; }
+  h2 { margin-top:44px; color:var(--accent); border-left:5px solid var(--accent); padding-left:10px; font-size:1.25rem; }
+  h3 { margin:0 0 6px; font-size:1.02rem; }
+  .desc { margin:0 0 12px; color:#475569; font-size:.95rem; }
+  .demo { border:1px solid var(--line); border-radius:10px; margin:18px 0; overflow:hidden; }
+  .demo > h3, .demo > .desc { padding:0 14px; }
+  .demo > h3 { padding-top:14px; }
+  .rendered { padding:14px; background:#fff; border-top:1px dashed var(--line); border-bottom:1px dashed var(--line); }
+  .rendered::before { content:"ผลลัพธ์บนหน้าเว็บ"; display:block; font-size:.68rem; letter-spacing:1px;
+                      color:#94a3b8; margin-bottom:10px; }
+  pre.code { margin:0; padding:14px; background:var(--code-bg); color:#e2e8f0;
+             font-family:"SF Mono",Consolas,Menlo,monospace; font-size:.82rem; line-height:1.55;
+             overflow-x:auto; white-space:pre; }
+  pre.code::before { content:"โค้ด HTML"; display:block; font-size:.68rem; letter-spacing:1px;
+                     color:#7c83a3; margin-bottom:10px; }
+  .note { background:#ccfbf1; border-left:4px solid #0d9488; padding:10px 14px; border-radius:6px;
+          font-size:.9rem; margin:14px 0; }
+  .nav-top { font-size:.9rem; margin-bottom:20px; }
+  code.i { background:#f1f5f9; padding:1px 5px; border-radius:4px; font-size:.85em; }
+</style>
+</head>
+<body>
+<p class="nav-top"><a href="index.html">&larr; สารบัญ quick reference</a></p>
+
+<h1>บทที่ 3 &nbsp;คำสั่งเชิงความหมาย (Semantic Tags)</h1>
+<p class="sub">section · article · header · footer · nav · aside · figure/figcaption · main · mark · time</p>
+
+<div class="note">
+  <b>Semantic tag คืออะไร:</b> แท็กที่บอก "บทบาท/ความหมาย" ของเนื้อหา ไม่ใช่แค่หน้าตา
+  ต่างจาก <code class="i">&lt;div&gt;</code> ที่ไม่สื่ออะไรเลย ·
+  <b>ได้อะไร:</b> ดีต่อ SEO, โปรแกรมอ่านหน้าจอ (screen reader) เข้าใจโครงหน้า, ทีมอ่านโค้ดง่าย
+</div>
+
+<h2>3.1 องค์ประกอบความหมายใน HTML — ภาพรวมโครงหน้า</h2>
+<div class="demo">
+  <h3>โครงหน้าเว็บมาตรฐานด้วย semantic tags</h3>
+  <p class="desc">แต่ละแท็กแทนพื้นที่ที่คุ้นตาในเว็บทั่วไป — ตัวอย่างเต็มอยู่หัวข้อ 3.12</p>
+  <script type="text/plain" class="src">
+<div style="border:1px dashed #94a3b8;font-size:.85rem;text-align:center">
+  <div style="background:#0d9488;color:#fff;padding:6px">&lt;header&gt; — โลโก้ / ชื่อเว็บ</div>
+  <div style="background:#14b8a6;color:#fff;padding:6px">&lt;nav&gt; — เมนูนำทาง</div>
+  <div style="display:flex">
+    <div style="background:#f0fdfa;flex:3;padding:16px">&lt;main&gt; → &lt;article&gt; / &lt;section&gt;</div>
+    <div style="background:#ccfbf1;flex:1;padding:16px">&lt;aside&gt;</div>
+  </div>
+  <div style="background:#115e59;color:#fff;padding:6px">&lt;footer&gt; — ลิขสิทธิ์ / ติดต่อ</div>
+</div>
+  </script>
+</div>
+
+<h2>3.2 แท็ก &lt;section&gt;</h2>
+<div class="demo">
+  <h3>กลุ่มเนื้อหาที่เป็นเรื่องเดียวกัน — <b>ควรมีหัวข้อกำกับเสมอ</b></h3>
+  <script type="text/plain" class="src">
+<section>
+  <h2>เกี่ยวกับเรา</h2>
+  <p>section ใช้จัดกลุ่มเนื้อหาที่สัมพันธ์กันเป็นหมวด ๆ และควรมี h2–h6 กำกับ</p>
+</section>
+  </script>
+</div>
+
+<h2>3.3 แท็ก &lt;article&gt;</h2>
+<div class="demo">
+  <h3>เนื้อหาที่ "จบในตัวเอง" ยกไปวางที่อื่นก็ยังเข้าใจ</h3>
+  <p class="desc">เช่น โพสต์บล็อก, ข่าว, คอมเมนต์, การ์ดสินค้า</p>
+  <script type="text/plain" class="src">
+<article style="border:1px solid #e2e8f0;border-radius:8px;padding:12px">
+  <h2 style="margin-top:0">วิธีปลูกต้นไม้ในคอนโด</h2>
+  <p>เลือกต้นที่ทนแดดน้อย รดน้ำสัปดาห์ละครั้ง...</p>
+</article>
+  </script>
+</div>
+
+<h2>3.4 การบูรณาการ &lt;section&gt; และ &lt;article&gt;</h2>
+<div class="demo">
+  <h3>section ห่อ article หลายชิ้น</h3>
+  <script type="text/plain" class="src">
+<section>
+  <h2>บทความล่าสุด</h2>
+  <article style="border-bottom:1px solid #e2e8f0;padding:8px 0">
+    <h3 style="margin:.2em 0">โพสต์ที่ 1</h3>
+    <p>สรุปย่อ...</p>
+  </article>
+  <article style="padding:8px 0">
+    <h3 style="margin:.2em 0">โพสต์ที่ 2</h3>
+    <p>สรุปย่อ...</p>
+  </article>
+</section>
+  </script>
+</div>
+<div class="note">
+  <b>เลือกยังไง:</b> จัดกลุ่มบทความหลายชิ้น &rarr; <code class="i">section</code> ห่อ <code class="i">article</code> ·
+  บทความยาวแบ่งเป็นตอน &rarr; <code class="i">article</code> ห่อ <code class="i">section</code>
+</div>
+
+<h2>3.5 แท็ก &lt;header&gt;</h2>
+<div class="demo">
+  <h3>ส่วนหัว — ใช้ได้ทั้งระดับหน้า และภายใน article</h3>
+  <script type="text/plain" class="src">
+<header style="background:#f0fdfa;padding:12px;border-radius:8px">
+  <h1 style="margin:0">บล็อกของฉัน</h1>
+  <p style="margin:.3em 0 0;color:#64748b">บันทึกการเรียนเขียนเว็บ COS2204</p>
+</header>
+  </script>
+</div>
+
+<h2>3.6 แท็ก &lt;footer&gt;</h2>
+<div class="demo">
+  <h3>ส่วนท้าย — ลิขสิทธิ์ ผู้เขียน ลิงก์ติดต่อ</h3>
+  <script type="text/plain" class="src">
+<footer style="background:#f1f5f9;padding:12px;border-radius:8px;font-size:.9rem">
+  <p style="margin:0">&copy; 2568 ตี้ &middot; ติดต่อ me@example.com</p>
+</footer>
+  </script>
+</div>
+
+<h2>3.7 แท็ก &lt;nav&gt;</h2>
+<div class="demo">
+  <h3>ชุดลิงก์นำทาง<b>หลัก</b>เท่านั้น (ไม่ต้องห่อทุกลิงก์ในหน้า)</h3>
+  <script type="text/plain" class="src">
+<nav style="background:#134e4a;padding:10px;border-radius:8px">
+  <a href="#" style="color:#fff;margin-right:14px">หน้าแรก</a>
+  <a href="#" style="color:#fff;margin-right:14px">บทความ</a>
+  <a href="#" style="color:#fff">เกี่ยวกับ</a>
+</nav>
+  </script>
+</div>
+
+<h2>3.8 แท็ก &lt;aside&gt;</h2>
+<div class="demo">
+  <h3>เนื้อหาข้างเคียง เสริมจากเนื้อหาหลัก</h3>
+  <p class="desc">เช่น กล่องเกร็ดความรู้ ป้ายกำกับ โฆษณา ลิงก์ที่เกี่ยวข้อง</p>
+  <script type="text/plain" class="src">
+<aside style="background:#fffbeb;border-left:4px solid #f59e0b;padding:12px;border-radius:6px">
+  <h3 style="margin-top:0">รู้หรือไม่</h3>
+  <p style="margin-bottom:0">แท็ก aside ที่อยู่นอก main มักหมายถึง sidebar ทั้งเว็บไซต์</p>
+</aside>
+  </script>
+</div>
+
+<h2>3.9 แท็ก &lt;figure&gt; และ &lt;figcaption&gt;</h2>
+<div class="note">รูปดึงจากอินเทอร์เน็ต (picsum.photos) ต้องต่อเน็ตจึงเห็นรูป</div>
+<div class="demo">
+  <h3>ผูกรูป/โค้ด/แผนภาพ เข้ากับคำบรรยายอย่างเป็นทางการ</h3>
+  <script type="text/plain" class="src">
+<figure style="margin:0;border:1px solid #e2e8f0;border-radius:8px;padding:10px;display:inline-block">
+  <img src="https://picsum.photos/id/1024/320/180" alt="หมีขั้วโลกบนน้ำแข็ง" style="display:block;border-radius:4px">
+  <figcaption style="font-size:.88rem;color:#64748b;margin-top:6px">ภาพที่ 1: คำบรรยายภาพผูกกับรูปด้วย figcaption</figcaption>
+</figure>
+  </script>
+</div>
+
+<h2>3.10 แท็ก &lt;main&gt;</h2>
+<div class="demo">
+  <h3>เนื้อหาหลักของหน้า — มีได้ <b>1 อันต่อหน้า</b></h3>
+  <p class="desc">ต้องเป็นเนื้อหาที่ไม่ซ้ำกับหน้าอื่น และห้ามซ้อนใน article/header/footer/nav</p>
+  <script type="text/plain" class="src">
+<main style="border:1px solid #e2e8f0;border-radius:8px;padding:12px">
+  <h1 style="margin-top:0">เนื้อหาหลักของหน้า</h1>
+  <p>screen reader มีปุ่ม "ข้ามไปเนื้อหาหลัก" ที่กระโดดมาที่ main โดยตรง</p>
+</main>
+  </script>
+</div>
+
+<h2>3.11 แท็ก &lt;mark&gt;</h2>
+<div class="demo">
+  <h3>ไฮไลต์ข้อความที่เกี่ยวข้อง/สำคัญในบริบทปัจจุบัน</h3>
+  <script type="text/plain" class="src">
+<p>ผลการค้นหาคำว่า <mark>semantic</mark> จะถูก <mark>ไฮไลต์</mark> ให้เห็นเด่นในหน้า</p>
+  </script>
+</div>
+
+<h2>3.12 แท็ก &lt;time&gt;</h2>
+<div class="demo">
+  <h3>วันที่/เวลาที่ทั้งคนและเครื่องอ่านได้</h3>
+  <p class="desc">
+    <code class="i">datetime</code> = รูปแบบมาตรฐาน ISO 8601 (เครื่องอ่าน) ·
+    ข้อความข้างในเขียนให้คนอ่านสวย ๆ ได้อิสระ
+  </p>
+  <script type="text/plain" class="src">
+<p>เผยแพร่เมื่อ <time datetime="2025-09-03">3 กันยายน 2568</time></p>
+<p>รอบฉาย <time datetime="19:30">หนึ่งทุ่มครึ่ง</time></p>
+  </script>
+</div>
+
+<h2>รวมทุกแท็ก — โครงหน้าเว็บสมบูรณ์</h2>
+<div class="demo">
+  <h3>page &rarr; header / nav / main(article) / aside / footer</h3>
+  <script type="text/plain" class="src">
+<div style="border:1px solid #cbd5e1;border-radius:10px;overflow:hidden">
+  <header style="background:#134e4a;color:#fff;padding:12px"><strong>MY BLOG</strong></header>
+  <nav style="background:#0f766e;padding:8px">
+    <a href="#" style="color:#ccfbf1;margin-right:12px">หน้าแรก</a>
+    <a href="#" style="color:#ccfbf1">บทความ</a>
+  </nav>
+  <div style="display:flex;gap:12px;padding:12px">
+    <main style="flex:3">
+      <article>
+        <header>
+          <h2 style="margin:.2em 0">เริ่มเขียนเว็บวันแรก</h2>
+          <p style="color:#64748b;font-size:.85rem">
+            <time datetime="2025-09-03">3 ก.ย. 2568</time>
+          </p>
+        </header>
+        <p>วันนี้ได้ลองเขียน <mark>semantic tags</mark> ครบทุกตัว...</p>
+        <footer style="font-size:.85rem;color:#64748b">ผู้เขียน: ตี้</footer>
+      </article>
+    </main>
+    <aside style="flex:1;background:#f0fdfa;padding:10px;border-radius:6px">
+      <h3 style="margin-top:0">ป้ายกำกับ</h3>
+      <p style="font-size:.85rem;margin-bottom:0">HTML, CSS, ม.ราม</p>
+    </aside>
+  </div>
+  <footer style="background:#f1f5f9;padding:12px;font-size:.85rem">&copy; 2568 ตี้</footer>
+</div>
+  </script>
+</div>
+
+<p class="nav-top" style="margin-top:32px"><a href="2_คำสั่งพื้นฐาน.html">&larr; บทที่ 2</a> &nbsp;|&nbsp; <a href="index.html">สารบัญ</a> &nbsp;|&nbsp; <a href="4_คำสั่งจัดรูปแบบข้อความ.html">บทที่ 4 &rarr;</a></p>
+
+<script>
+document.querySelectorAll('script.src').forEach(function (s) {
+  var raw = s.textContent.replace(/^\s*\n/, '').replace(/\s+$/, '');
+  var rendered = document.createElement('div');
+  rendered.className = 'rendered';
+  rendered.innerHTML = raw;
+  var pre = document.createElement('pre');
+  pre.className = 'code';
+  pre.textContent = raw;
+  s.replaceWith(rendered, pre);
+});
+</script>
+</body>
+</html>

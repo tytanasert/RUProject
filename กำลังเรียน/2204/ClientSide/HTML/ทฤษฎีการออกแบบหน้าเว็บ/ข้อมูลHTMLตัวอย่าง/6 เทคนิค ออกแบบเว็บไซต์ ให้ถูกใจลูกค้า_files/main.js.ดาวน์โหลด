@@ -1,0 +1,14 @@
+$(function(){
+    initMobileMenu();
+});
+
+function initMobileMenu(){
+    $(".menu-mobile").find(".menu-item-has-children").click(function(){
+        if($(this).hasClass("active")){
+            $(".menu-mobile").find(".menu-item-has-children").removeClass("active");
+        }else{
+            $(".menu-mobile").find(".menu-item-has-children").removeClass("active");
+            $(this).addClass("active");
+        }
+    });
+}

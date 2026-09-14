@@ -1,0 +1,39 @@
+# ===== OS / Editor =====
+.DS_Store
+.idea/
+*.iml
+
+# ===== Python =====
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# ===== Node =====
+node_modules/
+
+# ===== Java / build output =====
+build/
+target/
+bin/
+*.class
+
+# ===== Archives =====
+# ก้อนใหญ่, เปิดดูบน GitHub ไม่ได้, มักซ้ำกับไฟล์ที่แตกแล้ว -> เก็บไว้ในเครื่องแต่ไม่ push
+*.7z
+*.rar
+*.zip
+
+# ===== Installers / disk images =====
+*.pkg
+*.dmg
+*.iso
+
+# ===== Media ก้อนใหญ่ =====
+*.mp4
+*.mov
+*.avi
+
+# ===== Nested cloned repo =====
+# 3105/lab clone แยกมาจาก luckkrit/lab_cos3105 (มี .git ของตัวเอง) -> ไม่ track ใน mono-repo นี้
+กำลังเรียน/3105/lab/

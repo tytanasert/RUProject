@@ -1,0 +1,10 @@
+@charset "UTF-8";
+/*
+Theme Name: Makewebeasy blog
+Version: 1.0
+Text Domain: mwe
+*/
+
+.mce-notification-inner{
+	display: none !important;
+}

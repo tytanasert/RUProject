@@ -1,0 +1,15 @@
+@charset "utf-8";
+header{
+	background-color: gray;
+}
+/* aside ให้ชิดช้าย กว้าง 20% และกำหนดสีพื้น */
+aside{
+	float:right; 
+	width: 20%;
+	background-color: silver;
+}
+/* list ที่อยู่ใน aside ไม่มีจุดด้านหน้า */
+aside li {
+	list-style: none;
+}
+

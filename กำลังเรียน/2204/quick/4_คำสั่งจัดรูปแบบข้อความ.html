@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>บทที่ 4 — คำสั่งจัดรูปแบบข้อความ | COS2204 quick reference</title>
+<style>
+  :root { --accent:#7c3aed; --code-bg:#1e1e2e; --line:#e2e8f0; }
+  * { box-sizing:border-box; }
+  body { font-family:-apple-system,"Segoe UI","Sarabun",Tahoma,sans-serif;
+         line-height:1.7; color:#1e293b; max-width:920px; margin:0 auto; padding:24px; background:#fff; }
+  h1 { font-size:1.7rem; border-bottom:3px solid var(--accent); padding-bottom:8px; margin-bottom:4px; }
+  h1 + p.sub { color:#64748b; margin-top:0; }
+  h2 { margin-top:44px; color:var(--accent); border-left:5px solid var(--accent); padding-left:10px; font-size:1.25rem; }
+  h3 { margin:0 0 6px; font-size:1.02rem; }
+  .desc { margin:0 0 12px; color:#475569; font-size:.95rem; }
+  .demo { border:1px solid var(--line); border-radius:10px; margin:18px 0; overflow:hidden; }
+  .demo > h3, .demo > .desc { padding:0 14px; }
+  .demo > h3 { padding-top:14px; }
+  .rendered { padding:14px; background:#fff; border-top:1px dashed var(--line); border-bottom:1px dashed var(--line); }
+  .rendered::before { content:"ผลลัพธ์บนหน้าเว็บ"; display:block; font-size:.68rem; letter-spacing:1px;
+                      color:#94a3b8; margin-bottom:10px; }
+  pre.code { margin:0; padding:14px; background:var(--code-bg); color:#e2e8f0;
+             font-family:"SF Mono",Consolas,Menlo,monospace; font-size:.82rem; line-height:1.55;
+             overflow-x:auto; white-space:pre; }
+  pre.code::before { content:"โค้ด HTML"; display:block; font-size:.68rem; letter-spacing:1px;
+                     color:#7c83a3; margin-bottom:10px; }
+  .note { background:#f3e8ff; border-left:4px solid #7c3aed; padding:10px 14px; border-radius:6px;
+          font-size:.9rem; margin:14px 0; }
+  .nav-top { font-size:.9rem; margin-bottom:20px; }
+  code.i { background:#f1f5f9; padding:1px 5px; border-radius:4px; font-size:.85em; }
+  table.map { border-collapse:collapse; font-size:.88rem; margin:12px 0; }
+  table.map th, table.map td { border:1px solid #cbd5e1; padding:6px 10px; text-align:left; }
+  table.map th { background:#f3e8ff; }
+</style>
+</head>
+<body>
+<p class="nav-top"><a href="index.html">&larr; สารบัญ quick reference</a></p>
+
+<h1>บทที่ 4 &nbsp;คำสั่งจัดรูปแบบข้อความ</h1>
+<p class="sub">โครงสร้างข้อความ · แท็กตกแต่งคำ/วลี · Semantic text tags ใน HTML5</p>
+
+<div class="note">
+  <b>หลักคิดของบทนี้:</b> HTML5 เลือกแท็ก "ตามความหมาย" ไม่ใช่ตามหน้าตา —
+  หน้าตา (สี ขนาด ฟอนต์) เป็นงานของ CSS · แบ่งได้ 2 กลุ่ม:
+  (1) <b>จัดโครงสร้างข้อความ</b> — heading, paragraph, quote, pre
+  (2) <b>ตกแต่งคำ/วลี</b> — strong, em, code, abbr ...
+</div>
+
+<h2>4.1 แท็กจัดโครงสร้างข้อความ</h2>
+<div class="demo">
+  <h3>heading · paragraph · br · hr</h3>
+  <p class="desc">โครงกระดูกของเนื้อความ (รายละเอียด heading/list อยู่บทที่ 2)</p>
+  <script type="text/plain" class="src">
+<h2>หัวข้อบท</h2>
+<p>ย่อหน้าปกติ — 1 ย่อหน้าควรเป็นความคิดเดียวจบ</p>
+<p>ประโยคแรก<br>บรรทัดใหม่ภายในย่อหน้าเดียวกันด้วย br</p>
+<hr>
+<p>ย่อหน้าใต้เส้นแบ่งประเด็น</p>
+  </script>
+</div>
+<div class="demo">
+  <h3>&lt;pre&gt; + &lt;code&gt; — บล็อกโค้ด</h3>
+  <p class="desc"><code class="i">pre</code> รักษาช่องว่าง/บรรทัด · <code class="i">code</code> สื่อว่า "นี่คือโค้ด"</p>
+  <script type="text/plain" class="src">
+<pre><code>function hello(name) {
+  console.log("สวัสดี " + name);
+}</code></pre>
+  </script>
+</div>
+<div class="demo">
+  <h3>&lt;blockquote&gt; · &lt;q&gt; · &lt;cite&gt; — การอ้างคำพูด</h3>
+  <p class="desc">
+    <code class="i">blockquote</code> = อ้างยาวเป็นบล็อก · <code class="i">q</code> = อ้างสั้นในบรรทัด (เบราว์เซอร์ใส่ " ให้เอง) ·
+    <code class="i">cite</code> = ชื่อผลงาน/แหล่งที่มา
+  </p>
+  <script type="text/plain" class="src">
+<blockquote style="border-left:3px solid #cbd5e1;margin:0;padding-left:12px;color:#475569">
+  <p>เนื้อหาที่ยกมาแบบยาว จะถูกย่อหน้าเข้ามาให้เห็นชัดว่าเป็นคำพูดของคนอื่น</p>
+</blockquote>
+<p>อ้างสั้น ๆ ในบรรทัด: <q>ความเรียบง่ายคือความซับซ้อนขั้นสูงสุด</q>
+   &mdash; <cite>Leonardo da Vinci</cite></p>
+  </script>
+</div>
+
+<h2>4.2 แท็กเน้นความหมาย: importance &amp; emphasis</h2>
+<div class="demo">
+  <h3>&lt;strong&gt; = สำคัญ · &lt;em&gt; = เน้นเสียง (ซ้อนกันได้)</h3>
+  <script type="text/plain" class="src">
+<p><strong>คำเตือน:</strong> ห้ามลบไฟล์นี้</p>
+<p>ฉัน <em>ไม่เคย</em> บอกว่าเขาผิด &mdash; ย้ายที่ em ความหมายเปลี่ยน</p>
+<p><strong>สำคัญมาก และ <em>สำคัญเป็นพิเศษตรงนี้</em></strong></p>
+  </script>
+</div>
+
+<h2>4.3 การใช้งานแท็กตกแต่งต่าง ๆ</h2>
+<div class="demo">
+  <h3>&lt;b&gt; &lt;i&gt; &lt;u&gt; &lt;s&gt; — ยังมีใน HTML5 แต่ความหมายแคบลง</h3>
+  <p class="desc">ใช้เมื่อ "อยากให้ดูต่าง" โดยไม่ได้สื่อว่าสำคัญ/เน้นเสียง</p>
+  <script type="text/plain" class="src">
+<p><b>คำสำคัญ</b>ในย่อหน้า (เด่น แต่ไม่ได้ "สำคัญกว่า")</p>
+<p><i>ชื่อเรือ HMS Beagle</i> / ศัพท์ต่างประเทศ / ความคิดในใจ</p>
+<p><u>คำสะกดผิด</u> หรือชื่อเฉพาะ (จีน)</p>
+<p><s>ราคาเดิม 500 บาท</s> ลดเหลือ 350 บาท</p>
+  </script>
+</div>
+<div class="demo">
+  <h3>&lt;del&gt; · &lt;ins&gt; — ติดตามการแก้ไขเอกสาร</h3>
+  <script type="text/plain" class="src">
+<p>กำหนดส่งงาน <del>ศุกร์นี้</del> <ins>เลื่อนเป็นจันทร์หน้า</ins></p>
+  </script>
+</div>
+<div class="demo">
+  <h3>&lt;small&gt; · &lt;sub&gt; · &lt;sup&gt; · &lt;mark&gt;</h3>
+  <script type="text/plain" class="src">
+<p><small>เงื่อนไขเป็นไปตามที่บริษัทกำหนด</small></p>
+<p>พื้นที่ 5 ม.<sup>2</sup> &middot; น้ำ H<sub>2</sub>O &middot; <mark>ส่วนที่ไฮไลต์ไว้</mark></p>
+  </script>
+</div>
+<div class="demo">
+  <h3>&lt;abbr&gt; · &lt;dfn&gt; · &lt;code&gt; · &lt;kbd&gt; · &lt;samp&gt; · &lt;var&gt;</h3>
+  <p class="desc">กลุ่มแท็กสำหรับเนื้อหาเชิงเทคนิค — เอา <code class="i">title</code> ใส่ <code class="i">abbr</code> เพื่อให้ hover เห็นคำเต็ม</p>
+  <script type="text/plain" class="src">
+<p><dfn>HTML</dfn> ย่อจาก
+   <abbr title="HyperText Markup Language">HTML</abbr> (ลองชี้เมาส์ค้างที่ตัวย่อ)</p>
+<p>กด <kbd>Ctrl</kbd> + <kbd>S</kbd> เพื่อบันทึก</p>
+<p>รันคำสั่ง <code>npm run dev</code> จะได้ผลว่า <samp>Local: http://localhost:5173</samp></p>
+<p>กำหนดให้ตัวแปร <var>x</var> = 10</p>
+  </script>
+</div>
+<div class="demo">
+  <h3>&lt;bdo&gt; — บังคับทิศทางการอ่านข้อความ</h3>
+  <script type="text/plain" class="src">
+<p>ปกติ (ซ้ายไปขวา): 123-456-789</p>
+<p>กลับทิศ: <bdo dir="rtl">123-456-789</bdo></p>
+  </script>
+</div>
+
+<h2>4.4 แท็กข้อความแบบมีโครงสร้างความหมาย (Semantic Tags)</h2>
+<div class="demo">
+  <h3>หน้าตาเหมือนกัน แต่ความหมายต่างกัน</h3>
+  <p class="desc">screen reader กับ Google เห็นสองบรรทัดนี้ไม่เท่ากัน</p>
+  <script type="text/plain" class="src">
+<p style="font-weight:bold">ตัวหนาด้วย CSS &mdash; ไม่มีความหมายพิเศษ เป็นแค่หน้าตา</p>
+<p><strong>ตัวหนาด้วย strong</strong> &mdash; สื่อว่า "สำคัญ" โปรแกรมอ่านจะเน้นเสียง</p>
+  </script>
+</div>
+<div class="note">
+  <b>เลือกแท็กให้ถูก — เทียบแท็ก "หน้าตา" กับ "ความหมาย":</b>
+  <table class="map">
+    <tr><th>อยากได้ผล</th><th>แท็กเชิงหน้าตา</th><th>แท็กเชิงความหมาย (แนะนำ)</th></tr>
+    <tr><td>ตัวหนา</td><td><code class="i">&lt;b&gt;</code></td><td><code class="i">&lt;strong&gt;</code> (ถ้าสำคัญจริง)</td></tr>
+    <tr><td>ตัวเอียง</td><td><code class="i">&lt;i&gt;</code></td><td><code class="i">&lt;em&gt;</code> (ถ้าเน้นเสียง)</td></tr>
+    <tr><td>ขีดทับ</td><td><code class="i">&lt;s&gt;</code></td><td><code class="i">&lt;del&gt;</code> (ถ้าเป็นการลบ/แก้)</td></tr>
+    <tr><td>ตัวเล็ก/สี/ฟอนต์</td><td><code class="i">&lt;font&gt;</code> (เลิกใช้แล้ว)</td><td>ใช้ CSS</td></tr>
+  </table>
+</div>
+
+<p class="nav-top" style="margin-top:32px"><a href="3_คำสั่งเชิงความหมาย.html">&larr; บทที่ 3</a> &nbsp;|&nbsp; <a href="index.html">สารบัญ</a> &nbsp;|&nbsp; <a href="5_คำสั่งใช้งานตาราง.html">บทที่ 5 &rarr;</a></p>
+
+<script>
+document.querySelectorAll('script.src').forEach(function (s) {
+  var raw = s.textContent.replace(/^\s*\n/, '').replace(/\s+$/, '');
+  var rendered = document.createElement('div');
+  rendered.className = 'rendered';
+  rendered.innerHTML = raw;
+  var pre = document.createElement('pre');
+  pre.className = 'code';
+  pre.textContent = raw;
+  s.replaceWith(rendered, pre);
+});
+</script>
+</body>
+</html>

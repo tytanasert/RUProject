@@ -1,0 +1,4 @@
+# ใส่ลิงก์ไฟล์จาก Google Classroom ทีละบรรทัด
+# ตัวอย่าง:
+# https://drive.google.com/file/d/xxxxxxxxxxxxxxxx/view?usp=drive_link
+# https://example.com/file1.pdf

@@ -1,0 +1,5 @@
+67001 prayat 50 10 60 C
+67002 supat 60 15 75 B
+67003 Rinapat 45 12 57 D
+67004 Nantawan 53 14 67 C
+67005 Prapop 30 10 40 F

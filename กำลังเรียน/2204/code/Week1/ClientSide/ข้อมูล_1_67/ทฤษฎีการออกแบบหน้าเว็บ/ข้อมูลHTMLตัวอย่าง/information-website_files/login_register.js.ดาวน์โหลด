@@ -1,0 +1,645 @@
+var timerOn = true;
+$('body').on('click',"#register",function(evt){ 
+
+  evt.preventDefault();
+  var formAction = $(this).closest('form').attr('action');
+  var formId = $(this).closest('form').attr('id');
+  var formMethod = $(this).closest('form').attr('method');
+  var _this = $(this);
+  if ($('#recaptcha_check').val()=="1") {
+
+        if(grecaptcha.getResponse() == "") {
+        //jQuery('#grecaptcharesponse').css("display","block");
+            $('#recaptcha_check').val('');
+        //return false;
+        }else{
+            $('#recaptcha_check').val('1');
+        }
+  }
+  
+  //var form_data = $("#"+formId).serialize();
+  var form_data = new FormData($("#"+formId)[0]);
+  $('.error-msg').text('');
+  _this.prop('disabled',true);
+
+  $.ajax({
+    url: formAction,
+    type:formMethod,
+    data:form_data,
+    processData: false,
+    contentType: false,
+    beforeSend:function(){
+      showHideLoader('showLoader');
+    },
+    success:function(result){  
+        var response = jQuery.parseJSON(result); 
+        if(response.success==false){
+            if(response.limit == false){
+              jQuery('#'+formId+ " #errorMsg").html('<div class="alert alert-danger">'+response.message+'</div>');
+              return false;
+            }
+             
+              $.each(response.message, function(key,val){
+              $('#'+formId+' input[name='+key+']').siblings('p').text(val);
+              $('#'+formId+' select[name='+key+']').siblings('p').text(val);
+              $('#'+formId+' textarea[name='+key+']').siblings('p').text(val);
+              $('#'+formId+' radio[name='+key+']').siblings('p').text(val);
+              $('#'+formId+' p[id='+key+']').text(val);
+              $('#'+formId+' input[name='+key+']').parents(".select_country").siblings('p').text(val);
+              })
+              _this.prop('disabled',false);
+              showHideLoader('hideLoader');
+              return false;
+                
+          }else{
+             if(response.success==true){
+                  if(response.email_required == 'yes'){
+                      jQuery('#userResendEmail').show();
+                      $('#'+formId).hide();
+                      $(".signup-msg").removeClass('inactive')
+                      //_toastrMessage('success', response.message);
+                      setTimeout(function(){ 
+                        //showHideLoader('hideLoader');
+                        window.location.href = login_url_redirect;
+                         }, 0);
+                  }else{
+                    //alert('here')
+                    //$('#registerModal').modal('hide');
+                    _toastrMessage('success', response.message);
+                     setTimeout(function(){ 
+                      //showHideLoader('hideLoader');
+                      window.location.href = login_url_redirect;
+                       }, 0);
+                  }
+                  //$('#'+formId)[0].reset();
+                  _this.prop('disabled',false);
+
+                  return false;
+             }        
+        }
+    }
+    });
+});
+
+$('body').on('click','#link_reg',function(e){
+  
+  $.ajax({
+        url: checklimiturl,
+        method: 'post',
+        data: {
+            section: 'customer',
+            _token: window.Laravel.csrfToken
+        },
+        success: function(result){
+            var response = jQuery.parseJSON(result);
+
+            if(response.status == true){
+                $('#registerModal').modal('show');
+                $('#userRegister').show();
+                jQuery('#userResendEmail').hide();
+            }else{
+
+              swal({
+                  title: 'Oops..!', 
+                  type: "warning", 
+                  html : '<div class="alert alert-danger">'+response.message+'</div>',
+              });
+            }                
+        }
+    });
+
+})
+
+$('#confirmation_mail').click(function(e){ 
+
+  e.stopImmediatePropagation();
+  resendConfirmMail($(this));
+});
+
+$('body').on('click',"#btn_resend_mail",function(e){ 
+
+  e.stopImmediatePropagation();
+  resendConfirmMail($(this));
+});
+
+$('body').on('click',"#btn_login",function(){ 
+
+  var formAction = $(this).closest('form').attr('action');
+  var formId = $(this).closest('form').attr('id');
+  var formMethod = $(this).closest('form').attr('method');
+  var form_data = $("#"+formId).serialize();
+
+  if($('#'+formId+' #email').val() == ''){
+    $('#'+formId+' #email').css('border-color', 'red');
+    $('#'+formId+' #email').focus();
+
+    return false;
+  }else{
+    $('#'+formId+' #email').css('border-color', '');
+  }
+  if($('#'+formId+' #password').val() == ''){
+    $('#'+formId+' #password').css('border-color', 'red');
+    $('#'+formId+' #password').focus();
+    return false;
+  }else{
+    $('#'+formId+' #password').css('border-color', '');
+  }
+  return true;
+});
+
+//on enter submit login form
+$(document).on('keypress', '#loginForm', function(evt){
+  var code = (evt.keyCode ? evt.keyCode : evt.which);
+  if(code == 13) $('.btn_login').trigger('click');
+});
+
+
+$('body').on('click',".btn_login",function(){
+    
+    var formId = $(this).closest('form').attr('id');
+    var login_url = $('#'+formId).attr('action');
+    var email_phone_username = $('#'+formId+' #email').val();
+    var isEmail = IsEmail(email_phone_username);
+    var isPhone = IsPhone(email_phone_username);
+    var login_type = (isEmail) ? 'email' : 'username';
+
+    if(email_phone_username == ''){
+        $('#'+formId+' #email').css('border-color', 'red');
+        $('#'+formId+' #email').focus();
+        $(".blank_email").show();
+        return false;
+    }else{
+        $(".blank_email").hide();
+        $('#'+formId+' #email').css('border-color', '');
+    }
+
+    if($('#'+formId+' #password').val() == ''){
+        $('#'+formId+' #password').css('border-color', 'red');
+        $('#'+formId+' #password').focus();
+        return false;
+    }else{
+        $('#'+formId+' #password').css('border-color', '');
+    }
+
+    if(isPhone){
+        $.ajax({
+            url: login_url,
+            method: 'post',
+            data: {
+                email: email_phone_username,
+                password: $('#password').val(),
+                type: 'popup',
+                login_type:'phone',
+                _token: window.Laravel.csrfToken
+            },
+           
+            success: function(result_login){
+                //console.log(result_login);
+                if(result_login.status == 'error'){
+                    $('#login-error').html('<span class="error">'+result_login.message+'</span>');
+                }
+
+                if(result_login.status=='success'){
+                    $('#loginModal').modal('hide'); 
+                    var source = $('#btn-type').val();
+                    if(source=='addwishlist'){
+                        
+                    }
+                    else {
+                        location.reload(true);
+                    }
+                }
+                if(result_login.status=='resend_verify_email'){
+                    $('#loginModal').modal('hide'); 
+                    //$('#registerModal').modal('show');
+                    //$('#resend_list_btn').show();
+                    //jQuery('#resendEmailModal').modal('show');
+                    $('#emailVerify').val(result_login.email);
+                    $('#userResendEmail .modal-body #resendemail-body').show();
+                    
+                    $('#userRegister').hide();
+                    $('#txt_resend').val(result_login.email);
+                    $('#login-error').html(result_login.message);
+                    $('#login-error').html('<div class="verify_msg">This account has not been verified.<br><a href="javascript:;" class="link-primary" data-toggle="modal" data-target="#registerModal">Click Here</a> Resend Email to Activate Account</div>');
+                   
+                    $('#info-msg').html(result_login.message);
+                    $('#userResendEmail').show();
+                
+                }  
+                               
+            },
+            error: function (login_error) {
+                $('#login-error').html(login_error.responseJSON.errors.email[0]);
+                var timeinsec = $('span#seconds_decrease').html(); 
+                setInterval(function(){ 
+                    timeinsec = Number(timeinsec)-1; 
+                    if(timeinsec > 0){ 
+                        $('span#seconds_decrease').html(timeinsec); 
+                    }else{ 
+                        $('#login-error').hide(); 
+                    } 
+                }, 30000);
+            }
+        })
+        .always(function(){
+            showHideLoader('hideLoader');
+        });  
+    }else{
+        $.ajax({
+            url: login_url,
+            method: 'post',
+            data: {
+                email: $('#email').val(),
+                password: $('#password').val(),
+                login_type: login_type,
+                type:'popup',
+                product_id: $('#wish_product_id').val(),
+                _token: window.Laravel.csrfToken
+            },
+            beforeSend: function(){
+                showHideLoader('showLoader');
+            },
+            success: function(result){
+                
+                if(result.status=='success') {
+
+                    $('#loginModal').modal('hide'); 
+
+                    var source = $('#btn-type').val();
+                    if(source=='addwishlist'){
+                        
+                    }
+                    else {
+                        //location.reload(true);
+                        window.location = result.url;
+                    }
+                }
+                else if(result.status == 'error'){
+
+                    showHideLoader('hideLoader');
+                    
+                    $('#login-error').html('<span class="error">'+result.message+'</span>');
+                }
+                else if(result.status=='resend_verify_email') {
+
+                    showHideLoader('hideLoader');
+
+                    $('#loginModal').modal('hide'); 
+                    //$('#registerModal').modal('show');
+                    //$('#resend_list_btn').show();
+                    //jQuery('#resendEmailModal').modal('show');
+                    $('#emailVerify').val(result.email);
+                    $('#userResendEmail .modal-body #resendemail-body').show();
+                    
+                    $('#userRegister').hide();
+                    $('#txt_resend').val(result.email);
+                    $('#login-error').html(result.message);
+                    $('#login-error').html('<div class="verify_msg">This account has not been verified.<br><a href="javascript:;" class="link-primary" data-toggle="modal" data-target="#registerModal">Click Here</a> Resend Email to Activate Account<br>');
+                   
+                    $('#info-msg').html(result.message);
+                    $('#userResendEmail').show();
+                }              
+            },
+            error: function (error) {
+                //console.log(error);
+                showHideLoader('hideLoader');
+
+                $('#login-error').html(error.responseJSON.errors.email[0]);
+                var timeinsec = $('span#seconds_decrease').html(); 
+                setInterval(function(){ 
+                    timeinsec = Number(timeinsec)-1; 
+                    if(timeinsec > 0){ 
+                        $('span#seconds_decrease').html(timeinsec); 
+                    }else{ 
+                        $('#login-error').hide(); 
+                    } 
+                }, 30000);
+            }
+        })
+        .always(function(){
+            //showHideLoader('hideLoader');
+        });
+    }
+
+});
+
+$('body').on('click',"#create_new_account",function(){ 
+  $('#loginModal').modal('hide');
+  $('#registerModal').modal('show');
+  $('html').addClass('modal-open');
+})
+
+$('body').on('click',"#forget_password",function(){ 
+
+  $('#pageloginForm').hide();
+  $('#pageforgetForm').show();
+})
+
+//on enter submit login form
+$('body').on('keypress', '#forgetForm, #pageforgetForm', function(evt){
+  var code = (evt.keyCode ? evt.keyCode : evt.which);
+  if(code == 13) $('#btn_forget').trigger('click');
+});
+
+$('body').on('submit', '#forgetForm, #pageforgetForm',function(e){
+  return false;
+});
+
+$('body').on('click',"#btn_forget",function(e){ 
+  e.stopImmediatePropagation();
+  var formAction = $(this).closest('form').attr('action');
+  var formId = $(this).closest('form').attr('id');
+  var formMethod = $(this).closest('form').attr('method');
+  var form_data = $("#"+formId).serialize();
+
+  if($('#'+formId+' #emailForgot').val() == ''){
+    $('#'+formId+' #emailForgot').css('border-color', 'red');
+    $('#'+formId+' #emailForgot').focus();
+    return false;
+  }else{
+    $('#'+formId+' #emailForgot').css('border-color', '');
+  }
+    if ($("#recaptcha_con").val()=="1") {
+        if(grecaptcha.getResponse() == "") {
+            jQuery('#grecaptcharesponse').css("display","block");
+            return false;
+        }
+    }
+  
+    var login_option = $("[name='login_option']:checked").val();
+    var action_url = (login_option=='LOGIN_WITH_PHONE') ? action_url_phone_send_otp : formAction;
+    var login_content = $('#'+formId+' #emailForgot').val();
+    //console.log(login_content);
+  $.ajax({
+    url: action_url,
+    type:formMethod,
+    data:form_data,
+    beforeSend: function(){
+        showHideLoader('showLoader');
+    },
+    success:function(result){  
+      //console.log(result); //return false;
+	    if(login_option=='LOGIN_WITH_PHONE'){
+            if(result.status == 'success') {
+                optVerify(login_content);
+            }else{
+              var msg = '';
+              if(result.message!==undefined){
+                msg = result.message;
+              }else{
+                msg = lang.something_went_wrong;
+              }
+              _toastrMessage('error', msg);
+            }
+      }else{
+        //console.log(result); return false;
+         if(result=='1' || result.status == 'success') {
+
+            if(result.type!==undefined && result.type=='otp'){
+                optVerify(result.no);
+            }else{
+              /*jQuery('#'+formId+' #btn_forget').prop("disabled", true);
+            _toastrMessage('success', 'Password reste link has been send to your email id.');*/
+              jQuery('#thanks_div').css("display","block");
+              jQuery('#'+formId+' #btn_forget').prop("disabled", true);
+              jQuery('#pageforgetForm').css("display","none");
+            }
+            
+          } else {
+            var msg = '';
+            if(result.message!==undefined){
+              msg = result.message;
+            }else{
+              msg = lang.something_went_wrong;
+            }
+          _toastrMessage('error', msg);
+          } 
+      }
+	 	
+    }
+  })
+  .always(function(){
+        showHideLoader('hideLoader');
+    });
+});
+
+function optVerify(login_content){
+    swal({
+        title: lang.please_enter_otp_you_received_on_phone,
+        input: 'text',
+        inputAttributes: {
+            autocapitalize: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: lang.submit,
+        showLoaderOnConfirm: true,
+        inputValidator: function(value) {                    
+          return new Promise(function(resolve, reject) {
+              if(value) resolve();
+              else reject();
+          });
+      }
+    }).then(function(result_otp) {
+        $.ajax({
+            type : 'post',
+            url : action_url_phone_verify_otp,
+            headers : {
+              'X-CSRF-TOKEN' : window.Laravel.csrfToken,
+              '_token' : window.Laravel.csrfToken,
+            },
+            beforeSend : function(){                        
+                try{showHideLoaderAdmin('showLoader')}catch(er){console.log};
+            },
+            data : {'otp' : result_otp,'login_content':login_content,'login_option':'LOGIN_WITH_PHONE'},
+            }).done(function(data){
+                if(data.status && data.status == 'error')
+                    _toastrMessage('error', data.message);
+                else{
+                    console.log(data);
+                    if(data.url!=='undefined' && data.url!==''){
+                        $('#reset_token').val(data.token);
+                      $('#reset_login_phone').val(login_content);
+                      $('#phone_resetModal').modal({show: true,backdrop: 'static'});
+                      //window.location.href = data.url;
+                    }else{
+                      /*jQuery('#'+formId+' #btn_forget').prop("disabled", true);
+                    _toastrMessage('success', 'Password reste link has been send to your email id.');*/
+                      jQuery('#thanks_div').css("display","block");
+                      jQuery('#'+formId+' #btn_forget').prop("disabled", true);
+                      jQuery('#pageforgetForm').css("display","none");
+                    }
+                }
+            });
+    });
+}
+
+$('#savePhonePass').click(function(evt){
+    evt.preventDefault();
+    var formAction = $(this).closest('form').attr('action');
+    var formId = $(this).closest('form').attr('id');
+    var _this = $(this);
+    var form_data = $("#"+formId).serialize();
+    $('.error-msg').text('');
+    //showHideLoader('showLoader');
+    callAjaxRequest(formAction,"post",form_data, function(result){
+        if(result.status=='success'){
+            swal({
+                title: result.status,
+                text: result.message, 
+                type: result.status
+            }).then(function () {
+                window.location.href=result.url;
+            });
+            showHideLoader('hideLoader');
+        }else{
+            showHideLoader('hideLoader');
+            if(typeof(result.type) != "undefined"){
+                $.each(result.message, function(key,val){
+                  $('#'+formId+' input[name='+key+']').siblings('p').text(val);
+                });
+            }else{
+                swal('error',result.message,'error');
+            }
+            
+        }
+        
+    });
+    //alert(465456);
+});
+
+/*function resendConfirmMail(_this){
+  var formAction = _this.closest('form').attr('action');
+  var formId = _this.closest('form').attr('id');
+  var formMethod = _this.closest('form').attr('method');
+  var form_data = $("#"+formId).serialize();
+  
+  if($('#'+formId+' #txt_resend').val() == ''){
+    $('#'+formId+' #txt_resend').focus();
+    return false;
+  }
+
+  $('.error-msg').text('');
+  $.ajax({
+    url: formAction,
+    type:formMethod,
+    data:form_data,
+
+    success:function(result){  
+
+        console.log(result);
+        var response = jQuery.parseJSON(result); 
+        $('#'+formId+' #resendMail').html('<h3 class="p-2 pb-0">'+response.message+'</h3>');
+        return false;
+
+    }
+  })
+}*/
+function resendConfirmMail(_this){
+    var formAction = _this.closest('form').attr('action');
+    var formId = _this.closest('form').attr('id');
+    var formMethod = _this.closest('form').attr('method');
+    var form_data = $("#"+formId).serialize();
+  
+    if($('#'+formId+' #txt_resend').val() == ''){
+        $('#'+formId+' #txt_resend').focus();
+        return false;
+    }
+    if ($("#recaptcha_con").val()=="1") {
+        if(grecaptcha.getResponse() == "") {
+            jQuery('#grecaptcharesponse').css("display","block");
+            return false;
+        }
+    }
+  
+
+  //var form_data = new FormData($("#"+formId)[0]);
+  $('.error-msg').text('');
+  //return false;
+  $("#showHideLoader").show();
+    function timer(remaining) {
+        var m = Math.floor(remaining / 60);
+        var s = remaining % 60;
+        
+        m = m < 10 ? '0' + m : m;
+        s = s < 10 ? '0' + s : s;
+        document.getElementById('timer').innerHTML =  s + 's';
+        remaining -= 1;
+        
+        if(remaining >= 0 && timerOn) {
+          setTimeout(function() {
+              timer(remaining);
+          }, 1000);
+          
+          return;
+        } else if (remaining == 0) {
+
+        }
+
+        if(!timerOn) {
+          // Do validate stuff here
+          return;
+        }
+        
+        // Do timeout stuff here
+        $("#resend_verify_link_again").attr('disabled', false);
+        document.getElementById('timer').innerHTML = '';
+    }
+  $.ajax({
+    url: formAction,
+    type:formMethod,
+    data:form_data,
+
+    success:function(response){  
+
+        //console.log(result);
+        //var response = jQuery.parseJSON(result); 
+        $('#'+formId+' #resendMail').html('<h3>'+response.message+'</h3>');
+        $('#resend_verify_link').show();
+        $("#resend_verify_link_again").attr('disabled', true);
+        timer(5);
+        $('#userResendEmail').hide();
+        $('#btn_resend_mail').hide();
+        //jQuery('.g-recaptcha').css("display","none");
+
+        return false;
+
+    }
+  }).always(function(){
+        $("#showHideLoader").hide();
+    });
+}
+
+function IsPhone(phone) {
+  // console.log(phone);
+  var regex = /^\d{10}$/;
+  if(!phone.match(regex)) {
+      return false;
+  }else{
+      return true;
+  }
+}
+
+function IsEmail(email) {
+  var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  if(!regex.test(email)) {
+      return false;
+  }else{
+      return true;
+  }
+}
+
+/*
+*@desc : hide resend modal & show signup modal after close 
+      added by rajeev 9-july-2019
+**/
+$(document).on('hide.bs.modal', '#registerModal', function(){  
+  setTimeout(function(){
+    $('#userRegister').show();
+    $('#userResendEmail').hide();
+  }, 500);  
+});
+
+$('body').on('click',"#openpopup",function(e){
+    //$(this).attr('rel');
+    $('#txt_resend').val($(this).attr('rel'));
+});

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://www.1001click.com/blog/principles-of-web-page -->
+<html amp="" lang="th"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="icon" href="https://www.1001click.com/favicon.ico">
+<title>หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง</title>
+<!--<base href="https://www.1001click.com">--><base href=".">
+<meta name="description" content="หลักการออกแบบเว็บเพจเบื้องต้น พื้นฐานควรมีด้วยกัน 5 หน้า 5 เมนู แต่ละหน้าคือหน้าไหน และควรใส่เนื้อหาอะไรลงไปบ้าง ใครยังไม่รู้ หรือยังคิดไม่ออก ห้ามพลาด">
+<meta name="keywords" content="หลักการออกแบบเว็บเพจ">
+<meta property="og:title" content="หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง">
+<meta property="og:description" content="หลักการออกแบบเว็บเพจเบื้องต้น พื้นฐานควรมีด้วยกัน 5 หน้า 5 เมนู แต่ละหน้าคือหน้าไหน และควรใส่เนื้อหาอะไรลงไปบ้าง ใครยังไม่รู้ หรือยังคิดไม่ออก ห้ามพลาด">
+<meta property="og:site_name" content="1001 Click">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.1001click.com/blog/principles-of-web-page">
+<meta property="og:image" content="https://www.1001click.com/imgadmins/blog-cover/cover-content-49.webp">
+<link rel="canonical" href="https://www.1001click.com/blog/principles-of-web-page">
+<meta name="DCTERMS.audience" content="computers and internet">
+<meta name="robots" content="all">
+<meta name="rating" content="General">
+<meta name="dcterms.rightsHolder" content="1001 Click">
+<meta name="dcterms.rights" content="1001 Click">
+<meta name="dcterms.dateCopyrighted" content="2013">
+<meta name="author" content="1001 Click">
+<meta name="revisit-after" content="7 Days">
+<meta name="verify-v1" content="TauXyaJPaqNUwoOTP8xS3jaMMPLUs6rOBai5VWvmsx8=">
+<meta name="google-site-verification" content="qdpi_7P5rOJ79PQ-AOrJ_81nRLJVRTH0tRNM6wkFVFk">
+
+<link rel="apple-touch-icon" sizes="57x57" href="https://www.1001click.com/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://www.1001click.com/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://www.1001click.com/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://www.1001click.com/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://www.1001click.com/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://www.1001click.com/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://www.1001click.com/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://www.1001click.com/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://www.1001click.com/favicon/apple-icon-180x180.png">
+<link rel="apple-touch-icon" sizes="512x512" href="https://www.1001click.com/favicon/apple-icon-512x512.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://www.1001click.com/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.1001click.com/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="https://www.1001click.com/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.1001click.com/favicon/favicon-16x16.png">
+<link rel="manifest" href="https://www.1001click.com/favicon/manifest-work.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://code.jquery.com/">
+<link rel="preconnect" href="https://cdn.jsdelivr.net/">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="anonymous">
+<link rel="stylesheet preload" href="https://www.1001click.com/css/1001click.css?v=1692949454" as="style">
+<link rel="preconnect stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<link rel="preconnect stylesheet" href="https://fonts.googleapis.com/css2?family=Athiti:wght@300;400;500;600;700&amp;display=swap"> 
+<link rel="preconnect stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@200;300;400;500;600;700&amp;display=swap">    <link rel="stylesheet" href="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/jquery.fancybox.min.css">
+    <!-- Google Tag Manager -->
+<script type="text/javascript" async="" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/destination"></script><script type="text/javascript" async="" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/destination(1)"></script><script type="text/javascript" async="" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/js"></script><script src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/sdk.js.ดาวน์โหลด" async="" crossorigin="anonymous"></script><script id="facebook-jssdk" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/sdk(1).js.ดาวน์โหลด"></script><script async="" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/gtm.js.ดาวน์โหลด"></script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MMSJ22W');</script>
+<!-- End Google Tag Manager -->
+
+
+<!-- amp fonm, img, script-->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://google.com/article"
+        },
+        "headline": "Article headline",
+        "image": [
+        "https://www.1001click.com/https://www.1001click.com/imgadmins/blog-cover/cover-content-49.webp",
+        "https://www.1001click.com/https://www.1001click.com/imgadmins/blog-banner/principles-cover.webp"
+        ],
+        "datePublished": "2023-06-02T16:31:00+07:00",
+        "dateModified": "2023-06-02T16:39:00+07:00",
+        "author": {
+        "@type": "Person",
+        "name": "1001",
+        "url": "https://www.1001click.com/blog/principles-of-web-page"
+        },
+        "publisher": {
+        "@type": "Organization",
+        "name": "Google",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.1001click.com/imgadmins/blog-cover/cover-content-49.webp"
+        }
+        }
+    }
+    </script>
+
+<style data-emotion="css-global" data-s=""></style><style data-emotion="css" data-s=""></style><script type="text/javascript" async="" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/f.txt"></script><meta http-equiv="origin-trial" content="A4oIpR6f5aUXFRMbL6t6qaMk4lrHWxcV3DcrzORsA9sEsIk1FBRMFzzhfMNLuUpokZH40FV8s7iiXtt/729v8A4AAACFeyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiQXR0cmlidXRpb25SZXBvcnRpbmdDcm9zc0FwcFdlYiIsImV4cGlyeSI6MTcxNDUyMTU5OSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><script attributionsrc="" type="text/javascript" async="" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/f(1).txt"></script><style type="text/css" data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://z-p3-static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://z-p3-static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://z-p3-static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://z-p3-static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://z-p3-static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100%;position:absolute;right:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://z-p3-static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://z-p3-static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}
+.fb_mpn_mobile_landing_page_slide_out{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_out_from_left{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out_from_left;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_up{animation-duration:500ms;animation-name:fb_mpn_landing_page_slide_up;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_in{animation-duration:300ms;animation-name:fb_mpn_bounce_in;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out{animation-duration:300ms;animation-name:fb_mpn_bounce_out;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out_v2{animation-duration:300ms;animation-name:fb_mpn_fade_out;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_from_left{animation-duration:300ms;animation-name:fb_bounce_in_from_left;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_from_left{animation-duration:300ms;animation-name:fb_bounce_out_from_left;transition-timing-function:ease-in}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}@keyframes fb_mpn_landing_page_slide_out{0%{margin:0 12px;width:100% - 24px}60%{border-radius:18px}100%{border-radius:50%;margin:0 24px;width:60px}}@keyframes fb_mpn_landing_page_slide_out_from_left{0%{left:12px;width:100% - 24px}60%{border-radius:18px}100%{border-radius:50%;left:12px;width:60px}}@keyframes fb_mpn_landing_page_slide_up{0%{bottom:0;opacity:0}100%{bottom:24px;opacity:1}}@keyframes fb_mpn_bounce_in{0%{opacity:.5;top:100%}100%{opacity:1;top:0}}@keyframes fb_mpn_fade_out{0%{bottom:30px;opacity:1}100%{bottom:0;opacity:0}}@keyframes fb_mpn_bounce_out{0%{opacity:1;top:0}100%{opacity:.5;top:100%}}@keyframes fb_bounce_in_v2{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50%{transform:scale(1.03, 1.03);transform-origin:bottom right}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}@keyframes fb_bounce_in_from_left{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom left}50%{transform:scale(1.03, 1.03);transform-origin:bottom left}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom left}}@keyframes fb_bounce_out_v2{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}@keyframes fb_bounce_out_from_left{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom left}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom left}}@keyframes slideInFromBottom{0%{opacity:.1;transform:translateY(100%)}100%{opacity:1;transform:translateY(0)}}@keyframes slideInFromBottomDelay{0%{opacity:0;transform:translateY(100%)}97%{opacity:0;transform:translateY(100%)}100%{opacity:1;transform:translateY(0)}}</style><style data-emotion="cwc-css" data-s=""></style></head>
+<body onload="getmainMn(5);">
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MMSJ22W"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->    <header data-aos="fade-down">
+  <div class="content-wrap">
+    <div class="row align-items-center no-gutters">
+      <div id="headerwrap" class="col-2">
+        <a href="https://www.1001click.com/" class="logo"><img src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/logo.svg" alt="logo1001alt" width="107" height="65"></a>
+      </div>
+      <div class="col-10 text-right">
+        <nav id="menumain">
+          <ul class="menu-links">
+            <li><a href="https://www.1001click.com/about-us" id="menumain1">About Us</a></li>
+            <li class="hassubmenu"><a href="https://www.1001click.com/services" id="menumain2">Services</a><span id="arrow-mobile"><img class="lazyload" data-src="images/icon/arrow-menu-up.webp" alt="arrow-menu-up"></span>
+              <ul class="submenulist">
+                <li><a href="https://www.1001click.com/services/corporate-website">รับทำเว็บไซต์บริษัท ( Corporate website )</a></li>
+                <li><a href="https://www.1001click.com/services/e-commerce-website">รับทำเว็บไซต์ E-commerce ( E-commerce website )</a></li>
+                <li><a href="https://www.1001click.com/services/mobile-application">รับทํา Mobile Application</a></li>
+                <li><a href="https://www.1001click.com/services/maintained-management">รับดูแลเว็บไซต์ และปรับปรุงข้อมูล</a></li>
+                <li><a href="https://www.1001click.com/services/web-hosting">Web Hosting &amp; VPS</a></li>
+                <li><a href="https://www.1001click.com/services/seo">รับทำ SEO</a></li>
+                <li><a href="https://www.1001click.com/services/google-ads">รับทำ Google ads</a></li>
+              </ul>
+            </li>
+            <li><a href="https://www.1001click.com/portfolio" id="menumain3">Portfolio</a></li>
+            <li><a href="https://www.1001click.com/blog" id="menumain5" class="menumain-active">Blog</a></li>
+            <li><a href="https://www.1001click.com/contact-us" id="menumain4">Contact Us</a></li>
+          </ul>
+        </nav>
+        <!--<div id="lang"><a href="">EN</a></div>-->
+        <div id="telhead" class="head-tel">
+          <a href="tel:0811161001"><img class=" lazyloaded" data-src="images/telephone.svg" alt="1001click-telephon-contact" width="22" height="22" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/telephone.svg"></a>
+          <a href="https://www.1001click.com/1001click-line-id" target="_blank" class="line-head"><img class=" lazyloaded" data-src="images/line.svg" alt="1001click-line-contact" width="27" height="26" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/line.svg"></a>
+        </div>
+        <div id="mainmenu-button-mb">
+          <div class="wrap-menu-btn">
+            <div id="line-1"></div>
+            <div id="line-2"></div>
+            <div id="line-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>    <main class="main-content">
+        <div class="services">
+            <div id="blog-detail">
+                <div class="nav-wrap">
+                    <div class="content-wrap">
+                        <nav id="navwrap"><a href="https://www.1001click.com/">Home</a> <span>∘</span> <a href="https://www.1001click.com/blog">Blog</a> <span>∘</span> <p class="navdefault">หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง</p></nav>
+                    </div>
+                </div>
+                <div class="sidebar-fix-style">
+                    <div class="content-wrap">
+                        <h1 class="maintitle-article txt-left" data-aos="fade-up">หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง</h1>
+                        <div class="blog-date">08 ก.ค. 65</div>
+                        
+
+                        <div class="row">
+                            <div class="col-xl-9">
+                                <div class="services-inner-wrap box-content-main" data-aos="fade-up">
+                                    <div class="img-service">
+                                        <img class=" lazyloaded" data-src="https://www.1001click.com/imgadmins/blog-banner/principles-cover.webp" alt="หลักการออกแบบเว็บเพจ" width="1600" height="797" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/principles-cover.webp">
+                                    </div>
+                                    <p><span>หลังจากที่ได้ทราบเกี่ยวกับ โครงสร้างเว็บไซต์ กันไปแล้วในบทความก่อนหน้านี้ สำหรับใครที่ยังไม่รู้ หรือยังไม่ได้อ่าน สามารถย้อนกลับไปอ่านกันก่อนได้ที่บทความ โครงสร้างเว็บไซต์ภายในที่ต้องรู้จัก มีอะไรบ้าง และสำหรับบทความนี้ 1001 Click จะมาแนะนำคนที่ต้องการสร้างเว็บไซต์ แต่ยังไม่มีไอเดียดี ๆ ยังไม่รู้ว่าจะออกแบบหน้าเว็บเพจอย่างไร และต้องนำเนื้อหาอะไรใส่ลงไปในหน้านั้น ๆ สำหรับหลักการออกแบบเว็บเพจง่าย ๆ ที่ทำตามได้ไม่ยาก ดูเป็นมาตรฐานที่ดีนั้น มีดังนี้</span></p>
+
+                                    <div class="select-section"><h2 class="subtitle-article">ยาวไปอยากเลือกอ่าน</h2><ul class="select-section-list"><li><a href="javascript:void(0);goToSection(1)">หน้าเว็บเพจทั่วไป ควรมีหน้าอะไร</a></li><li><a href="javascript:void(0);goToSection(2)">หลักการออกแบบเว็บเพจแต่ละหน้า</a></li></ul></div>
+						                                    <div id="atc-section-1">
+                                        <div class="img-service">
+                                           <img class=" lazyloaded" data-src="https://www.1001click.com/imgadmins/blog-detail/principles-01.webp" alt="หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้" width="713" height="486" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/principles-01.webp">                                        </div>
+                                        <h2>หน้าเว็บเพจทั่วไป ควรมีหน้าอะไร</h2>
+                                        <p>ก่อนอื่น มาทำความเข้าใจเรื่องของการสร้างหน้าเว็บเพจกันก่อน โดยหน้าเว็บเพจนั้น หากกล่าวกันตามตรง เจ้าของเว็บไซต์ สามารถออกแบบได้ตามความต้องการ ว่าต้องการให้มีหน้าไหนอยู่บ้าง แต่ทั้งนี้ โดยทั่วไป หรือแทบจะเป็น defualt ของการออกแบบเว็บไซต์นั้นของคนส่วนใหญ่ในปัจจุบันนั้น มักจะมี 5 หน้าในการเริ่มต้นเสมอ</p>
+<ol class="content-num-list">
+<li>หน้าแรก (Home Page)</li>
+<li>เกี่ยวกับเรา (About Us)</li>
+<li>สินค้า (Product)</li>
+<li>บริการของเรา (Service)</li>
+<li>ติดต่อ (Contact)</li>
+</ol>                                    </div>
+							                                    <div id="atc-section-2">
+                                        <div class="img-service">
+                                                                                   </div>
+                                        <h2>หลักการออกแบบเว็บเพจแต่ละหน้า</h2>
+                                        <h3 class="subtitle-article-h3">หน้าแรก (HOME PAGE)</h3>
+<p><strong>โลโก้ - ชื่อองค์กร - คำโปรยแนะนำองค์กร - สินค้าหรือบริการที่แนะนำ<span>&nbsp;</span></strong>สำหรับ 4 อย่างเบื้องต้นนั้น เป็นเบสิคหลักการออกแบบเว็บเพจในหน้าแรกที่เรียบง่ายที่สุด โดยหน้าแรกหรือ Homepage นั้น จุดประสงค์ของการมีอยู่หลักคือ การสื่อสารตราสินค้า และการสื่อสารองค์กรเป็นหลัก<span>&nbsp;</span><strong>หากคุณเป็นเว็บไซต์องค์กร</strong><span>&nbsp;</span>โลโก้, ชื่อองค์กร และคำโปรยที่จะทำให้คนรับรู้เรื่องราวขององค์กรคุณเป็นสิ่งจำเป็น อาจจะใส่เนื้อหาเกี่ยวกับสิ่งที่องค์กรของคุณกำลังพัฒนา การวิจัยที่องค์กรมีส่วนร่วม หรือเนื้อหาเกี่ยวกับงานที่องค์กรของคุณกำลังทำอยู่<span>&nbsp;</span><strong>หากคุณเป็นเว็บไซต์ธุรกิจ SME ขายของออนไลน์ทั่วไป หรือเว็บไซต์ E-Commerce</strong><span>&nbsp;</span>สิ่งที่คุณยังคงต้องมีก็คือโลโก้, ชื่อองค์กร และคำโปรยแนะนำร้านของตัวเอง แต่ทั้งนี้ การหยิบขายค้าโปรโมต หรือสินค้าขายดีมาแนะนำตั้งแต่ในหน้าแรก หรือใน Home Page เลยนั้นก็ไม่ใช่เรื่องที่แย่ และอาจจะยิ่งส่งผลดีขึ้นอีกด้วยซ้ำ</p>                                    </div>
+							                                    <div id="atc-section-3">
+                                        <div class="img-service">
+                                           <img class=" lazyloaded" data-src="https://www.1001click.com/imgadmins/blog-detail/principles-02.webp" alt="หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้" width="713" height="486" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/principles-02.webp">                                        </div>
+                                        <h2></h2>
+                                        <h3 class="subtitle-article-h3">เกี่ยวกับเรา (ABOUT US)</h3>
+<p>สำหรับหน้าเกี่ยวกับเรา<span>&nbsp;</span><strong>หากคุณเป็นเว็บไซต์องค์กร</strong><span>&nbsp;</span>คุณควรที่จะมีหน้านี้ไว้ จุดประสงค์เพื่อขยายความในส่วนของเรื่องราวบริษัทที่คุณได้โปรยไว้ในหน้าแรก แต่พยายามอย่าเขียนซ้ำ หรือคัดลอกเนื้อหาจากหน้าแรกทั้งหมดมาแปะ เพราะมันอาจจะทำให้เกิด Duplicate Content ซึ่งส่งผลให้เว็บไซต์ของคุณติดลบในการทำการตลาดอย่าง SEO โดยส่วนแล้วสิ่งที่มักจะใส่กันในหน้านี้คือพันธกิจ และวิสัยทัศน์ สำหรับเว็บไซต์องค์กร แต่<strong>หากคุณเป็นเว็บไซต์ธุรกิจ SME ขายของออนไลน์ทั่วไป หรือเว็บไซต์ E-Commerce</strong><span>&nbsp;</span>คุณอาจจะข้ามในส่วนนี้ไปได้ แต่หากต้องการคงไว้ ก็สามารถใส่รายละเอียดที่คล้ายกับของเว็บไซต์องค์กรตามข้างต้นได้เลย</p>
+<h3 class="subtitle-article-h3">สินค้า (PRODUCT)</h3>
+<p>สำหรับหน้าสินค้า แน่นอนว่าเป็นหน้าที่สำคัญมากสำหรับ<strong>เว็บไซต์ธุรกิจ SME ขายของออนไลน์ทั่วไป หรือเว็บไซต์ E-Commerce</strong><span>&nbsp;</span>เพราะเป็นหน้าจัดโชว์สินค้าที่คุณมีพร้อมจำหน่าย ณ ขณะนั้น โดยสำหรับหลักการออกแบบเว็บเพจสำหรับหน้าสินค้านั้น คุณสามารถออกแบบหน้าเพจย่อย ๆ ในหน้าสินค้าได้อีกที อาจจะเป็นหมวดหมู่ของสินค้าแต่ละประเภทเป็นต้น เนื่องจากความสำคัญของหน้านี้คือการ จัดโชว์สินค้า เพราะฉะนั้นพยายามเลือกภาพสินค้าที่ดี มองเห็นได้ชัด และจะดีมากหากมีหลายมุม และคำอธิบายสินค้านั้น ก็ต้องมีความชัดเจน และรายละเอียดมากพอ อาทิ ชื่อสินค้า รุ่น ราคา เป็นต้น</p>                                    </div>
+							                                    <div id="atc-section-4">
+                                        <div class="img-service">
+                                           <img class=" lazyloaded" data-src="https://www.1001click.com/imgadmins/blog-detail/principles-03.webp" alt="หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้" width="713" height="486" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/principles-03.webp">                                        </div>
+                                        <h2></h2>
+                                        <h3 class="subtitle-article-h3">บริการของเรา (SERVICE)</h3>
+<p>สำหรับหน้า บริการของเรา นั้น แม้ว่าจะเป็น<strong>เว็บไซต์องค์กร</strong><span>&nbsp;</span>ก็สามารถมีได้ รวมทั้ง<strong>เว็บไซต์ธุรกิจ SME ขายของออนไลน์ทั่วไป หรือเว็บไซต์ E-Commerce<span>&nbsp;</span></strong>ก็สามารถมีได้เช่นกัน สำหรับเว็บไซต์องค์กรนั้น คุณอาจจะเลือกแนะนำบริการที่องค์กรของคุณทำอยู่ พร้อมแนบช่องทางการติดต่อเล็ก ๆ น้อย ๆ ไว้ด้วยก็เป็นช่องทางที่ไม่แย่ และสำหรับเว็บไซต์ SEM หรือ E-Commerce ทั่วไป ในส่วนนี้อาจจะเน้นเป็นบริการเสริม ไม่ใช่สินค้าที่อยู่ในหน้าหลัก เพื่อป้องกันการซ้ำซ้อนของหน้าเว็บเพจภายในเว็บไซต์</p>
+<h3 class="subtitle-article-h3">ติดต่อ (CONTACT)</h3>
+<p>หน้าติดต่อนั้น โดยส่วนใหญ่เว็บไซต์ทุกรูปแบบโดยทั่วไปก็มักจะมีกัน สำหรับหลักการออกแบบหน้าเว็บเพจในหน้านี้นั้น จุดประสงค์ก็เพื่อนำเสนอช่องทางการติดต่อ อาจจะเป็นที่อยู่องค์กร เบอร์โทรติดต่อ อีเมล หรือไลน์ หรือจะปักเป็น Google Map พื้นที่ตั้งขององค์กรเลยก็ย่อมได้ ไม่เพียงเท่านั้น ในหน้านี้ ยังมักที่จะแนบฟอร์มแสดงความคิดเห็น หรือฟอร์มสมัครสมาชิกสำหรับเว็บไซต์ไว้ได้อีกด้วย</p>
+<p>ครบ จบกันไปแล้วกับ 5 หน้าเว็บเพจที่มักจะใช้กันในเว็บไซต์ทั่วไป โดยทั้งนี้ หลักการออกแบบเว็บเพจไม่ได้ตายตัวแต่อย่างใด คุณสามารถลด และเพิ่มหน้าต่าง ๆ ได้ตามความต้องการเสมอ ขอแค่เพียงคุณรู้จุดประสงค์ของการสร้างหน้าเว็บเพจแต่ละหน้า รู้หลักการออกแบบ และเนื้อหาที่ต้องการจะใส่ลงไปเบื้องต้น ยิ่งไปกว่านั้น คำเรียกหน้าเว็บเพจ หรือคำที่ใช้เป็นหัวข้อบน Navigator Bar ก็สามารถออกแบบได้โดยไม่ต้องซ้ำใครอีกด้วย อาทิ หน้าเกี่ยวกับเรา ก็อาจจะใช้เป็นภาษาไทยว่า เกี่ยวกับเรา หรือภาษาอังกฤษว่า About Us หรือ Who we are หรือ Introduction ก็แล้วแต่จะออกแบบกันได้เลย</p>                                    </div>
+							                                    <div id="atc-section-5">
+                                        <div class="img-service">
+                                           <img class=" lazyloaded" data-src="https://www.1001click.com/imgadmins/blog-detail/principles-04.webp" alt="หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้" width="713" height="486" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/principles-04.webp">                                        </div>
+                                        <h2></h2>
+                                        <p>ทั้งนี้หลักการออกแบบเว็บเพจ ก็อาจจะขึ้นอยู่กับการตลาด หรือวัตถุประสงค์ของเว็บไซต์ที่คุณจัดทำขึ้น หากต้องการทำตลาดแบบ SEO บนเว็บไซต์ เว็บเพจแต่ละหน้า ก็ต้องมีการ Optimize &amp; Organize เนื้อหา และคีย์เวิร์ด รวมทั้งจัดการ Heading Tag ต่าง ๆ ให้เหมาะสม อาจจะต้องทำหน้า Blog หรือหน้าบทความ เพื่อขยายคีย์เวิร์ดและสนับสนุนการทำ SEO ให้เพิ่มมากขึ้น หรือหากต้องการทำ Landing Page เปล่า ๆ สำหรับยิงแอด หรือทำโฆษณาโดยเฉพาะ คุณอาจจะสร้างเว็บไซต์ที่มีแค่หน้าแรกหน้าเดียว และเน้นเนื้อหาที่ Hard Sell พร้อมปุ่ม Call to Action เยอะ ๆ เพื่อจุดประสงค์ทางด้านการขาย ก็เป็นสิ่งที่ทำได้เช่นกัน</p>
+<p>หากคุณสนใจที่จะสร้างเว็บไซต์เพื่อใช้งานสำหรับธุรกิจประเภทใดก็ตาม 1001 Click ยินดีให้บริการ เราคือบริษัทรับทำเว็บไซต์ ที่มากประสบการณ์ ดูแลโดยทีมงานมากความสามารถ มีองค์ความรู้เกี่ยวกับหลักการออกแบบเว็บเพจให้กับเว็บไซต์ทุกประเภท ทำความรู้จักเราเพิ่มเติม หรือดูรายละเอียดบริการต่าง ๆ เพิ่มได้ที่เว็บไซต์<span>&nbsp;</span><a href="https://www.1001click.com/">1001 Click</a></p>
+<ul class="content-list">
+<li>สามารถติดต่อเพื่อขอคำปรึกษาได้ที่<span>&nbsp;</span><a href="tel:0811161001">081 116 1001</a></li>
+<li>Line Id :<span>&nbsp;</span><a href="https://www.1001click.com/1001click-line-id" target="_blank">1001click</a></li>
+<li>Email :<span>&nbsp;</span><a href="mailto:info@1001click.com">info@1001click.com</a></li>
+</ul>                                    </div>
+							
+                                    <!-- Share -->
+                                    <div class="share-article-wrap">
+                                        <div class="share-lable">Share</div>
+                                        <div class="social-list-share-wrap">
+                                            <div class="social-list-share">
+                                                <a href="javascript:popup(&#39;https://www.facebook.com/sharer.php?u=https://www.1001click.com/blog/principles-of-web-page&#39;,&#39;&#39;,500,400)" rel="nofollow">
+                                                    <div class="social-icon-share-fb">
+                                                        <img src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/face.svg" alt="1001click-facebook-share" width="22" height="22">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="social-list-share mt2">
+                                                <iframe data-lang="en" data-type="share-c" data-env="REAL" data-url="https://www.1001click.com/blog/principles-of-web-page" data-color="default" data-size="small" data-count="false" data-ver="3" data-line-it-id="0" scrolling="no" frameborder="0" allowtransparency="true" style="width: 31px; height: 30px; visibility: visible; position: static !important; opacity: 1 !important;" class="line-it-button" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/share.html" title="Share this page on LINE."></iframe>  
+                                            </div>
+                                            <div class="social-list-share"><input type="hidden" id="copyUrl" name="copyUrl" value="">
+                                                <a href="javascript:copyToClipboard()">
+                                                    <div class="social-icon-share-url">
+                                                        <img src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/copy-url.svg" alt="1001click-email-share" width="16" height="16">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <!--<div class="social-list-share">
+                                                <a href="#send-mail" data-fancybox="">
+                                                    <div class="social-icon-share-mail">
+                                                        <img src="images/email.svg" alt="1001click-email-share" width="23" height="17">
+                                                    </div>
+                                                </a>
+                                            </div>-->
+                                        </div>
+                                    </div>
+                                    <!-- Share -->
+                                </div>
+                            </div>
+                            
+
+                            <!-- Blog related -->
+                            <div class="col-xl-3 has-2-items">
+                                <div class="sidebar-item sticky-blog">
+    <div class="make-me-sticky">
+        <div class="box-content-menu blog-menu-content">
+            <div class="blog-lastest">
+                <div class="title-slide-article">บทความล่าสุด</div>
+                <div class="blog-lastest-list-wrap">
+                                     <div class="blog-lastest-list">
+                        <a href="https://www.1001click.com/blog/5-ways-to-pick-languages-for-web-development">
+                            <div class="row">
+                                <div class="col-xl-6 col-4">
+                                    <div class="blog-lastest-img">
+                                        <img class=" lazyloaded" data-src="https://www.1001click.com/imgadmins/blog-cover/2024070504.jpg" alt="เขียนเว็บ" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/2024070504.jpg">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-8">
+                                    <div class="article-date">05 ก.ค. 67</div>
+                                    <div class="blog-lastest-txt">5 เทคนิคการเลือกภาษาสำหรับเขียนเว็บไซต์</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                                     <div class="blog-lastest-list">
+                        <a href="https://www.1001click.com/blog/10-ways-to-ensure-web-app-security">
+                            <div class="row">
+                                <div class="col-xl-6 col-4">
+                                    <div class="blog-lastest-img">
+                                        <img class=" lazyloaded" data-src="https://www.1001click.com/imgadmins/blog-cover/2024070503.jpg" alt="Web App" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/2024070503.jpg">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-8">
+                                    <div class="article-date">05 ก.ค. 67</div>
+                                    <div class="blog-lastest-txt">เช็คด่วน! Web App ของเรามีความเสี่ยงอยู่หรือเปล่า?</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                                     <div class="blog-lastest-list">
+                        <a href="https://www.1001click.com/blog/what-is-seo-consult-service">
+                            <div class="row">
+                                <div class="col-xl-6 col-4">
+                                    <div class="blog-lastest-img">
+                                        <img class=" lazyloaded" data-src="https://www.1001click.com/imgadmins/blog-cover/2024070502.jpg" alt="seo consult" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/2024070502.jpg">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-8">
+                                    <div class="article-date">05 ก.ค. 67</div>
+                                    <div class="blog-lastest-txt">บริการ SEO Consult คืออะไร ทำไมถึงต้องทำระยะยาว</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                                     <div class="blog-lastest-list">
+                        <a href="https://www.1001click.com/blog/5-website-samples-from-1001click">
+                            <div class="row">
+                                <div class="col-xl-6 col-4">
+                                    <div class="blog-lastest-img">
+                                        <img class=" ls-is-cached lazyloaded" data-src="https://www.1001click.com/imgadmins/blog-cover/2024070501.jpg" alt="ตัวอย่างเว็บ" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/2024070501.jpg">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-8">
+                                    <div class="article-date">05 ก.ค. 67</div>
+                                    <div class="blog-lastest-txt">พาส่อง 5 ตัวอย่างเว็บไซต์ธุรกิจที่วางใจ ให้ 1001 Click พัฒนาเว็บไซต์</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                            </div>
+                            <!-- Blog related -->
+
+
+                            <!-- send to mail -->
+                            <!--<div id="send-mail" style="display:none;">
+                                <div class="title">สำรวจทิศทางการพัฒนาฟีเจอร์ของบริษัทรับสร้างเว็บไซต์ที่ดี เป็นแบบไหนกัน?</div>
+                                <form>
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <label for="">ชื่อผู้ส่ง</label>
+                                            <input type="" class="form-control" id="">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <label for="">อีเมลผู้ส่ง</label>
+                                            <input type="" class="form-control" id="">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <label for="">อีเมลผู้รับ</label>
+                                            <input type="" class="form-control" id="">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <label for="">รายละเอียดเพิ่มเติม</label>
+                                            <textarea class="form-control" name="txtmessage" id="txtmessage" rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="remark">โปรดกรอกข้อมูลที่สำคัญ (*) ให้ครบถ้วน</div>
+                                    <button class="btn-send mr-2" type="submit">ตกลง</button>
+                                    <button class="btn-send" type="reset">ยกเลิก</button>
+                                </form>
+                            </div>-->
+                            <!-- send to mail -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+  <div class="content-wrap">
+    <div class="row">
+      <div class="col-xl-5">
+        <div class="contact-footer">
+          <p class="contact-footer-head font-weight-500 mb-8">1001 Click Co., Ltd</p>
+          <p>ท่านสามารถติดต่อขอรับคำปรึกษาเกี่ยวกับบริการ รับทำเว็บไซต์ , รับทำเว็บอีคอมเมิร์ส , รับทำ Mobile application  และ SEO ได้ที่ รายละเอียดด้านล่าง</p>
+          <div class="socialcontact-footer">
+            <div class="social-list">
+              <a href="tel:0811161001">
+                <div class="social-icon">
+                  <img class=" ls-is-cached lazyloaded" data-src="images/telephone.svg" alt="1001click-telephon-contact" width="22" height="22" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/telephone.svg">
+                </div>
+                <div class="social-name">+66 811161001</div>
+              </a>
+            </div>
+            <div class="social-list">
+              <a href="mailto:info@1001click.com">
+                <div class="social-icon">
+                  <img class=" lazyloaded" data-src="images/email.svg" alt="1001click-email-contact" width="23" height="17" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/email.svg">
+                </div>
+                <div class="social-name">info@1001click.com</div>
+              </a>
+            </div>
+            <div class="social-list">
+              <a href="https://www.google.co.th/maps/place/1001+Click+Co.,+Ltd/@13.6187152,100.6184463,17z/data=!3m1!4b1!4m5!3m4!1s0x311d5f6030a3b5b9:0xdcc99add2731ae27!8m2!3d13.61871!4d100.620635" target="_blank">
+                <div class="social-icon">
+                  <img class=" lazyloaded" data-src="images/pin_map-marker.svg" alt="1001click-map-contact" width="25" height="25" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/pin_map-marker.svg">
+                </div>
+                <div class="social-name">Map</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-7">
+        <nav id="menufooter">
+          <ul class="menu-links-footer footer-service">
+            <li><a href="https://www.1001click.com/about-us">About Us</a></li>
+            <li><a href="https://www.1001click.com/services">Services</a>
+              <ul>
+                <li><a href="https://www.1001click.com/services/corporate-website"><span>∘</span> รับทำเว็บไซต์บริษัท ( Corporate website )</a></li>
+                <li><a href="https://www.1001click.com/services/e-commerce-website"><span>∘</span> รับทำเว็บไซต์ E-commerce ( E-commerce website )</a></li>
+                <li><a href="https://www.1001click.com/services/mobile-application"><span>∘</span> รับทํา Mobile Application</a></li>
+                <li><a href="https://www.1001click.com/services/maintained-management"><span>∘</span> รับดูแลเว็บไซต์ และปรับปรุงข้อมูล</a></li>
+                <li><a href="https://www.1001click.com/services/web-hosting"><span>∘</span> Web Hosting &amp; VPS</a></li>
+                <li><a href="https://www.1001click.com/services/seo"><span>∘</span> รับทำ SEO</a></li>
+                <li><a href="https://www.1001click.com/services/google-ads"><span>∘</span> รับทำ Google ads</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="menu-links-footer nomal-footer">
+            <li><a href="https://www.1001click.com/portfolio">Portfolio</a></li>
+            <li><a href="https://www.1001click.com/blog">Blog</a></li>
+            <li><a href="https://www.1001click.com/contact-us">Contact Us</a></li>
+            <li><a href="https://www.1001click.com/privacy-policy">Privacy Policy</a></li>
+            <li><a href="https://www.1001click.com/cookie-policy">Cookies Policy</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-bar">© 2021 1001 Click official website, all rights reserved. Web design by <a href="https://1001click.com/">1001 Click</a></div>
+</footer>
+    <script src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/jquery-3.5.1.min.js.ดาวน์โหลด" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/bootstrap.bundle.min.js.ดาวน์โหลด" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous" async=""></script>
+<script src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/lazysizes.min.js.ดาวน์โหลด" async=""></script>
+<script src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/function.js.ดาวน์โหลด" async=""></script>
+<script async="">
+    $("#mainmenu-button-mb").click(function(){
+    $(this).toggleClass("active");
+    $("#line-1").toggleClass("active");
+    $("#line-2").toggleClass("active");
+    $("#line-3").toggleClass("active");
+    $("#menumain").slideToggle("500");
+    $("#menumain").toggleClass("activebymb");
+    });
+
+    $("#menumain a").click(function(){
+        if($("#menumain").hasClass("activebymb")){
+            $("#menumain").slideUp("500");
+        }
+    });
+</script>
+<script type="text/javascript" defer="">
+    $("#arrow-mobile").click(function(){
+    $(this).toggleClass("active");
+    $(".submenulist").slideToggle("500");
+    });
+      (function($) {
+        var $window = $(window),
+            $hassubmenu = $('.hassubmenu');
+
+        function resize() {
+            if ($window.width() < 1081) {
+                return $hassubmenu.addClass('submobile');
+            }
+            $window.removeClass('submobile');
+        }
+        $window
+            .resize(resize)
+            .trigger('resize');
+    })(jQuery);
+</script>
+<script type="text/javascript" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/cwc.js.ดาวน์โหลด"></script>
+<script id="cookieWow" type="text/javascript" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/cPVEj7P9Z9qjnwr8WDkQVYhp" data-cwcid="cPVEj7P9Z9qjnwr8WDkQVYhp"></script>
+    <!-- fuction-articles-->
+    <!--script scroll menu right-->
+<script>
+$(document).ready(function(){
+    $(window).scroll(function(){
+        var scroll = $(window).scrollTop();
+    if (scroll > 200) {
+        $(".sidebar-item").addClass("sticky-blog");
+    }
+    else{
+        $(".sidebar-item").removeClass("sticky-blog");
+    }
+    })
+})
+</script>
+
+
+<!-- ID Section H2 -->
+<script>
+    function goToSection(id) {
+        $('html, body').animate({
+            scrollTop: $('#atc-section-' + id).offset().top - 200
+        }, 0);
+    }
+</script>
+
+
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div></div></div></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }   (document, 'script', 'facebook-jssdk'));
+</script>
+
+
+<!-- Your share button code Line -->
+<script type="text/javascript">
+    function popup(url,name,windowWidth,windowHeight) {      
+        myleft=(screen.width)?(screen.width-windowWidth)/2:100;   
+        mytop=(screen.height)?(screen.height-windowHeight)/2:100;     
+        properties = "width="+windowWidth+",height="+windowHeight;  
+        properties +=",scrollbars=yes, top="+mytop+",left="+myleft;     
+        window.open(url,name,properties);  
+    }
+</script>
+
+
+<!-- Copy URL -->
+<script>
+    function copyToClipboard() {
+    var copyText = document.getElementById("copyUrl");
+        copyText.value = window.location.href;
+        copyText.type = 'text';
+        copyText.select();
+        document.execCommand("copy");
+        copyText.type = 'hidden';
+    } 
+</script>
+
+<!--fancybox  -->
+<script src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/jquery.fancybox.min.js.ดาวน์โหลด"></script>
+
+<!-- share line -->
+<script src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/loader.min.js.ดาวน์โหลด" async="async" defer="defer"></script>
+
+    
+
+
+<iframe allow="join-ad-interest-group" data-tagging-id="AW-962485198" data-load-time="1720576311103" height="0" width="0" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/962485198.html" style="display: none; visibility: hidden;"></iframe><iframe allow="join-ad-interest-group" data-tagging-id="AW-962485198/5dsxCKP_5PgBEM63-coD" data-load-time="1720576311112" height="0" width="0" src="./หลักการออกแบบเว็บเพจเบื้องต้นมีอะไรสำคัญ และหน้าไหนควรมีเนื้อหาอะไรบ้าง_files/962485198(1).html" style="display: none; visibility: hidden;"></iframe><div class="cwc-sdk-container"><div class="cwc-cookie-banner-ui-sdk css-1x4ov0s-cwc"><div class="cwc-float-container cwc-entered cwc-css-1lu9llr-cwc" style="transform: translateY(0px);"><div class="cwc-banner-container cwc-css-1wlp8fj-cwc" data-testid="banner"><button class="cwc-banner-close-button cwc-css-1jc4ytx-cwc"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 12 12" height="12px" width="12px"><path d="M11.649 9.952c.469.47.469 1.228 0 1.697-.234.234-.541.351-.849.351-.307 0-.614-.117-.848-.351L6 7.697 2.05 11.65c-.234.234-.541.351-.849.351-.307 0-.614-.117-.848-.351-.47-.47-.47-1.228 0-1.697L4.303 6 .352 2.05c-.47-.47-.47-1.228 0-1.697.47-.47 1.227-.47 1.697 0L6 4.303 9.952.352c.47-.47 1.228-.47 1.697 0 .469.47.469 1.227 0 1.697L7.697 6l3.952 3.952z"></path></svg></button><div class="cwc-banner-content cwc-css-1con02n-cwc"><div class="cwc-banner-content-main cwc-css-1oa3ocn-cwc"><div class="cwc-banner-desc cwc-css-1wepw5u-cwc">เราใช้คุกกี้เพื่อเพิ่มประสิทธิภาพ และประสบการณ์ที่ดีในการใช้งานเว็บไซต์ คุณสามารถเลือกตั้งค่าความยินยอมการใช้คุกกี้ได้ โดยคลิก "การตั้งค่าคุกกี้"<a class="cwc-banner-policy-link cwc-css-1lqm5oj-cwc" href="https://www.1001click.com/cookie-policy" target="_blank" rel="noreferrer">นโยบายคุกกี้</a></div></div><div class="cwc-banner-content-aside cwc-css-1j5yw2a-cwc"><div class="cwc-accept-button-wrapper cwc-css-1f80dpo-cwc"><button class="cwc-accept-button cwc-css-7rq62j-cwc-cwc">ยอมรับทั้งหมด</button></div><div class="cwc-setting-button-wrapper cwc-css-1s9c8sm-cwc"><div role="button" class="cwc-setting-button cwc-css-10ddtgf-cwc">การตั้งค่าคุกกี้</div></div></div></div><div class=" cwc-css-1egflgb-cwc" style="visibility: visible !important; opacity: 1 !important; overflow: visible !important; margin-left: 0px !important; position: static !important; display: flex !important;"><div style="display: block !important; visibility: visible !important; opacity: 1 !important; overflow: visible !important; position: static !important; line-height: 0 !important; margin: auto 0px !important; width: 140px !important; height: 20px !important;"><a href="https://cookiewow.com/?utm_source=website-www.1001click.com&amp;utm_medium=banner&amp;utm_campaign=sponsor-link" target="_blank" rel="noopenner" style="display: block !important; visibility: visible !important; opacity: 1 !important; overflow: visible !important; margin-left: 0px !important; position: static !important; width: 100% !important; height: 100% !important; outline: none !important;"><div style="display: block !important; visibility: visible !important; opacity: 1 !important; overflow: visible !important; margin-left: 0px !important; position: static !important; width: 100% !important; height: 100% !important; line-height: 0 !important; background-repeat: no-repeat !important; background-size: contain !important; background-image: url(&quot;https://cookiecdn.com/images/powered-by-cookiewow.png&quot;) !important; background-position: left center !important;"></div></a></div></div></div></div></div></div></body></html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>บทที่ 2 — คำสั่งพื้นฐาน | COS2204 quick reference</title>
+<style>
+  :root { --accent:#2563eb; --code-bg:#1e1e2e; --line:#e2e8f0; }
+  * { box-sizing:border-box; }
+  body { font-family:-apple-system,"Segoe UI","Sarabun",Tahoma,sans-serif;
+         line-height:1.7; color:#1e293b; max-width:920px; margin:0 auto; padding:24px; background:#fff; }
+  h1 { font-size:1.7rem; border-bottom:3px solid var(--accent); padding-bottom:8px; margin-bottom:4px; }
+  h1 + p.sub { color:#64748b; margin-top:0; }
+  h2 { margin-top:44px; color:var(--accent); border-left:5px solid var(--accent); padding-left:10px; font-size:1.25rem; }
+  h3 { margin:0 0 6px; font-size:1.02rem; }
+  .desc { margin:0 0 12px; color:#475569; font-size:.95rem; }
+  .demo { border:1px solid var(--line); border-radius:10px; margin:18px 0; overflow:hidden; }
+  .demo > h3, .demo > .desc { padding:0 14px; }
+  .demo > h3 { padding-top:14px; }
+  .rendered { padding:14px; background:#fff; border-top:1px dashed var(--line); border-bottom:1px dashed var(--line); }
+  .rendered::before { content:"ผลลัพธ์บนหน้าเว็บ"; display:block; font-size:.68rem; letter-spacing:1px;
+                      color:#94a3b8; margin-bottom:10px; }
+  pre.code { margin:0; padding:14px; background:var(--code-bg); color:#e2e8f0;
+             font-family:"SF Mono",Consolas,Menlo,monospace; font-size:.82rem; line-height:1.55;
+             overflow-x:auto; white-space:pre; }
+  pre.code::before { content:"โค้ด HTML"; display:block; font-size:.68rem; letter-spacing:1px;
+                     color:#7c83a3; margin-bottom:10px; }
+  .note { background:#fef9c3; border-left:4px solid #eab308; padding:10px 14px; border-radius:6px;
+          font-size:.9rem; margin:14px 0; }
+  .nav-top { font-size:.9rem; margin-bottom:20px; }
+  code.i { background:#f1f5f9; padding:1px 5px; border-radius:4px; font-size:.85em; }
+</style>
+</head>
+<body>
+<p class="nav-top"><a href="index.html">&larr; สารบัญ quick reference</a></p>
+
+<h1>บทที่ 2 &nbsp;คำสั่งพื้นฐาน</h1>
+<p class="sub">พื้นฐาน HTML · ชนิดของแท็ก · ย่อหน้า · รูปภาพ · เส้นคั่น · หัวข้อ/รายการ · กำหนดรูปแบบ</p>
+
+<div class="note">
+  ทุกตัวอย่างในหน้านี้แสดง <b>ผลลัพธ์จริง</b> คู่กับ <b>โค้ด</b> จากซอร์สชุดเดียวกัน
+  ลองก๊อปโค้ดไปวางในไฟล์ <code class="i">.html</code> ของตัวเองแล้วแก้เล่นได้เลย
+</div>
+
+<h2>2.1 พื้นฐานความรู้เอชทีเอ็มแอล — โครงกระดูกของเอกสาร</h2>
+<div class="demo">
+  <h3>โครงสร้างขั้นต่ำของ 1 ไฟล์เว็บ</h3>
+  <p class="desc">
+    ทุกหน้าเว็บเริ่มด้วย <code class="i">&lt;!DOCTYPE html&gt;</code> แล้วห่อด้วย <code class="i">&lt;html&gt;</code>
+    ข้างในแบ่ง 2 ส่วน: <code class="i">&lt;head&gt;</code> = ข้อมูลของหน้า (ไม่แสดงผล) และ
+    <code class="i">&lt;body&gt;</code> = เนื้อหาที่ผู้ใช้เห็น
+  </p>
+  <pre class="code">&lt;!DOCTYPE html&gt;
+&lt;html lang="th"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;ชื่อที่แสดงบนแท็บเบราว์เซอร์&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- เนื้อหาที่ผู้ใช้เห็นอยู่ในนี้ --&gt;
+  &lt;h1&gt;หัวข้อหลัก&lt;/h1&gt;
+  &lt;p&gt;ย่อหน้าเนื้อหา&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</div>
+<div class="note">
+  <b>ทำไมต้องมี <code class="i">&lt;!DOCTYPE html&gt;</code>:</b> บอกเบราว์เซอร์ให้ใช้โหมดมาตรฐาน (standards mode)
+  ถ้าไม่ใส่ เบราว์เซอร์จะเดา ๆ (quirks mode) แล้วหน้าเพี้ยน ·
+  <b><code class="i">charset="UTF-8"</code></b> จำเป็นมากสำหรับภาษาไทย ไม่ใส่แล้วอาจได้ตัวยึกยือ
+</div>
+
+<h2>2.2 ชนิดของ HTML Tag</h2>
+<div class="demo">
+  <h3>Block-level vs Inline</h3>
+  <p class="desc">
+    <b>Block</b> (เช่น <code class="i">div, p, h1</code>) กินความกว้างเต็มบรรทัด ก้อนถัดไปจึงขึ้นบรรทัดใหม่เสมอ ·
+    <b>Inline</b> (เช่น <code class="i">span, a, strong</code>) ไหลต่อกันในบรรทัดเดียวจนกว่าจะเต็ม
+  </p>
+  <script type="text/plain" class="src">
+<div style="background:#dbeafe;padding:8px">div ก้อนที่ 1 (block)</div>
+<div style="background:#bfdbfe;padding:8px">div ก้อนที่ 2 — ขึ้นบรรทัดใหม่เองอัตโนมัติ</div>
+<span style="background:#fde68a;padding:4px">span A (inline)</span>
+<span style="background:#fca5a5;padding:4px">span B อยู่ต่อกันในบรรทัดเดียว</span>
+  </script>
+</div>
+<div class="demo">
+  <h3>แท็กปกติ (มีปิด) vs แท็กว่าง / void (ไม่มีปิด)</h3>
+  <p class="desc">
+    แท็กปกติมาเป็นคู่ <code class="i">&lt;p&gt;...&lt;/p&gt;</code> ·
+    แท็กว่างไม่มีเนื้อหาข้างใน จึงไม่มีตัวปิด เช่น <code class="i">&lt;br&gt; &lt;hr&gt; &lt;img&gt; &lt;meta&gt;</code>
+  </p>
+  <script type="text/plain" class="src">
+<p>บรรทัดหนึ่ง<br>บรรทัดสอง (br คือแท็กว่าง ไม่มี &lt;/br&gt;)</p>
+<hr>
+<p>ย่อหน้าใต้เส้นคั่น</p>
+  </script>
+</div>
+
+<h2>2.3 คำสั่งย่อหน้า</h2>
+<div class="demo">
+  <h3>&lt;p&gt; · &lt;br&gt; · การยุบช่องว่าง · &lt;pre&gt;</h3>
+  <p class="desc">
+    HTML <b>ยุบช่องว่าง/บรรทัดใหม่ที่พิมพ์ติดกันให้เหลือช่องเดียวเสมอ</b>
+    อยากได้ช่องว่างจริงใช้ <code class="i">&amp;nbsp;</code> · อยากคงรูปแบบที่พิมพ์ทุกตัวใช้ <code class="i">&lt;pre&gt;</code>
+  </p>
+  <script type="text/plain" class="src">
+<p>ประโยคแรกในย่อหน้า
+พิมพ์ขึ้นบรรทัดใหม่ในโค้ด        และเว้นวรรคหลายที      ก็ไม่มีผล</p>
+<p>บังคับขึ้นบรรทัดใน<br>ย่อหน้าเดียวกันด้วย br</p>
+<p>เว้นวรรคติดกันจริง ๆ&nbsp;&nbsp;&nbsp;&nbsp;ด้วย nbsp</p>
+<pre>pre  รักษา     ช่องว่าง
+และการขึ้นบรรทัด   ตามที่พิมพ์ทุกตัว</pre>
+  </script>
+</div>
+
+<h2>2.4 แท็กจัดการรูปภาพ</h2>
+<div class="note">ตัวอย่างรูปดึงจากอินเทอร์เน็ต (picsum.photos) ต้องต่อเน็ตจึงเห็นรูป — รูปที่ 2 จงใจใส่ path ผิดเพื่อโชว์ <code class="i">alt</code></div>
+<div class="demo">
+  <h3>&lt;img&gt; กับแอตทริบิวต์ src, alt, width, height</h3>
+  <p class="desc">
+    <code class="i">src</code> = ที่อยู่ไฟล์รูป · <code class="i">alt</code> = ข้อความแทนรูป (ใช้ตอนรูปไม่ขึ้น + ให้ screen reader อ่าน — <b>ต้องมีเสมอ</b>) ·
+    <code class="i">width/height</code> = จองพื้นที่ กันหน้ากระตุกตอนรูปโหลด
+  </p>
+  <script type="text/plain" class="src">
+<img src="https://picsum.photos/id/1015/220/130" alt="ภูเขาริมทะเลสาบ" width="220" height="130">
+<img src="path/ผิด/ไม่มีไฟล์.jpg" alt="รูปนี้โหลดไม่ขึ้น จะเห็นข้อความ alt แทน" width="260" height="90">
+  </script>
+</div>
+<div class="note">
+  <b>ชนิดของ path:</b>
+  <code class="i">img/logo.png</code> = relative (อ้างจากตำแหน่งไฟล์ html ปัจจุบัน) ·
+  <code class="i">/img/logo.png</code> = root-relative (อ้างจากรากเว็บไซต์) ·
+  <code class="i">https://.../logo.png</code> = absolute (URL เต็ม)
+</div>
+
+<h2>2.5 การสร้างเส้นคั่นในหน้าเว็บ</h2>
+<div class="demo">
+  <h3>&lt;hr&gt; — เส้นแบ่งเนื้อหา (thematic break)</h3>
+  <p class="desc">
+    <code class="i">&lt;hr&gt;</code> สื่อความหมายว่า "เปลี่ยนหัวข้อ/ประเด็น" ไม่ใช่แค่เส้นตกแต่ง
+    หน้าตาของเส้นปรับด้วย CSS
+  </p>
+  <script type="text/plain" class="src">
+<p>ตอนที่ 1</p>
+<hr>
+<p>ตอนที่ 2 — เส้นเริ่มต้นแบบเบราว์เซอร์</p>
+<hr style="border:none;border-top:3px dashed #2563eb;width:50%">
+<hr style="border:none;height:6px;border-radius:3px;background:linear-gradient(90deg,#2563eb,#93c5fd)">
+  </script>
+</div>
+
+<h2>2.6 การสร้างหัวข้อและรายการ</h2>
+<div class="demo">
+  <h3>หัวข้อ &lt;h1&gt;–&lt;h6&gt;</h3>
+  <p class="desc">
+    เลข 1–6 คือ <b>ระดับความสำคัญ/โครงสร้าง</b> ไม่ใช่ขนาดตัวอักษร ·
+    1 หน้าควรมี <code class="i">&lt;h1&gt;</code> เดียว และห้ามข้ามลำดับ (h2 ไป h4 เลยไม่ควร)
+  </p>
+  <script type="text/plain" class="src">
+<h1>H1 หัวข้อใหญ่สุดของหน้า</h1>
+<h2>H2 หัวข้อบท</h2>
+<h3>H3 หัวข้อย่อย</h3>
+<h4>H4</h4>
+<h5>H5</h5>
+<h6>H6 เล็กสุด</h6>
+  </script>
+</div>
+<div class="demo">
+  <h3>รายการไม่มีลำดับ &lt;ul&gt; และมีลำดับ &lt;ol&gt; (ซ้อนกันได้)</h3>
+  <script type="text/plain" class="src">
+<ul>
+  <li>กาแฟ</li>
+  <li>ชา
+    <ul>
+      <li>ชาเขียว</li>
+      <li>ชาไทย</li>
+    </ul>
+  </li>
+  <li>นม</li>
+</ul>
+
+<ol>
+  <li>เปิดไฟล์</li>
+  <li>แก้ไข</li>
+  <li>บันทึก</li>
+</ol>
+
+<ol type="a" start="3">
+  <li>เริ่มนับที่ตัวอักษร c</li>
+  <li>ต่อด้วย d</li>
+</ol>
+  </script>
+</div>
+<div class="demo">
+  <h3>รายการนิยาม &lt;dl&gt; / &lt;dt&gt; / &lt;dd&gt;</h3>
+  <p class="desc">ใช้กับคู่ "คำศัพท์ &rarr; คำอธิบาย" เช่น อภิธานศัพท์ ตาราง metadata</p>
+  <script type="text/plain" class="src">
+<dl>
+  <dt>HTML</dt>
+  <dd>ภาษากำหนดโครงสร้างเนื้อหาของหน้าเว็บ</dd>
+  <dt>CSS</dt>
+  <dd>ภาษากำหนดหน้าตา/สไตล์ของหน้าเว็บ</dd>
+</dl>
+  </script>
+</div>
+
+<h2>2.7 กำหนดรูปแบบ (formatting เบื้องต้น)</h2>
+<div class="demo">
+  <h3>แท็กตกแต่งคำ + แอตทริบิวต์ style</h3>
+  <p class="desc">
+    เลือกแท็กตาม <b>ความหมาย</b> ก่อน: <code class="i">&lt;strong&gt;</code> = สำคัญ, <code class="i">&lt;em&gt;</code> = เน้นเสียง
+    ส่วน <code class="i">&lt;b&gt; &lt;i&gt;</code> คือหนา/เอียงเฉย ๆ ไม่มีน้ำหนักความหมาย (รายละเอียดเต็มอยู่บทที่ 4)
+  </p>
+  <script type="text/plain" class="src">
+<p><strong>strong</strong> = สำคัญมาก · <b>b</b> = หนาเฉย ๆ</p>
+<p><em>em</em> = เน้นเสียง · <i>i</i> = เอียงเชิงสไตล์ (ชื่อหนังสือ ศัพท์ต่างประเทศ)</p>
+<p><u>ขีดเส้นใต้</u> · <small>ตัวเล็ก (หมายเหตุ)</small> · <mark>ไฮไลต์</mark> · x<sup>2</sup> · H<sub>2</sub>O</p>
+<p style="color:#b91c1c;font-size:20px;background:#fee2e2;padding:4px">
+  กำหนดสไตล์เฉพาะจุดด้วย style="..." — ใช้เท่าที่จำเป็น ปกติควรแยกไปเขียนใน CSS
+</p>
+  </script>
+</div>
+
+<div class="note">
+  <b>สรุปแนวคิดของบท:</b> HTML = "เนื้อหาคืออะไร" ไม่ใช่ "หน้าตาเป็นยังไง" (หน้าตาเป็นงานของ CSS)
+  แนวคิดนี้ต่อยอดเป็น <a href="3_คำสั่งเชิงความหมาย.html">บทที่ 3 คำสั่งเชิงความหมาย</a>
+</div>
+
+<p class="nav-top" style="margin-top:32px"><a href="index.html">&larr; สารบัญ</a> &nbsp;|&nbsp; <a href="3_คำสั่งเชิงความหมาย.html">บทที่ 3 &rarr;</a></p>
+
+<script>
+document.querySelectorAll('script.src').forEach(function (s) {
+  var raw = s.textContent.replace(/^\s*\n/, '').replace(/\s+$/, '');
+  var rendered = document.createElement('div');
+  rendered.className = 'rendered';
+  rendered.innerHTML = raw;
+  var pre = document.createElement('pre');
+  pre.className = 'code';
+  pre.textContent = raw;
+  s.replaceWith(rendered, pre);
+});
+</script>
+</body>
+</html>

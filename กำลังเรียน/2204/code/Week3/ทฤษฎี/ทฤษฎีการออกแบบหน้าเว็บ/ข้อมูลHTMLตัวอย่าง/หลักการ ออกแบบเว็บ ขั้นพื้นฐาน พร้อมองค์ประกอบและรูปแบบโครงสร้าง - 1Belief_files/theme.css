@@ -1,0 +1,322 @@
+/*
+COLOR
+#10637F     DARKER
+#1183AB     DARK
+#0D94C3     MAIN
+#16A4D5     SECOND
+#0D94C3     LINK
+#000000     LINK HOVER
+*/
+
+/* Header */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 15px 0;
+    font-weight: 300;
+    color: #0D94C3;
+    line-height: 1.5em;
+}
+
+.top-logo{
+	background: #0bc9eb;
+}
+
+.top-menu{
+    background: #2c3e50;
+}
+
+.top-social a{
+    color: rgba(255, 255, 255, 0.75);
+}
+
+a,
+.uk-link {
+    color: #22b7ea;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover,
+.uk-link:hover {
+    color: #0D94C3;
+    text-decoration: underline;
+}
+
+.uk-navbar-nav > li.uk-active > a,
+.uk-navbar-nav > li.uk-active:hover > a {
+    background-color: #0bc9eb;
+    color: #ffffff;
+    background-origin: border-box;
+}
+
+::-moz-selection {
+    background: #0bc9eb;
+    color: #ffffff;
+    text-shadow: none;
+}
+
+::selection {
+    background: #0bc9eb;
+    color: #ffffff;
+    text-shadow: none;
+}
+
+@media (min-width: 0px) {
+    .uk-navbar {
+        background: #0bc9eb;
+        color: rgba(255, 255, 255, 0.5);
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0);
+    }
+}
+
+@media (min-width: 970px) {
+    .uk-navbar {
+        background: #2c3e50;
+        color: rgba(255, 255, 255, 0.5);
+        border-bottom: 0;
+    }
+}
+
+/* Breadcrumb */
+
+.top-breadcrumb{
+    background: #F5F6F6;
+}
+
+.breadcrumbs{
+    color: #999;
+    background: #f6f6f6;
+}
+
+.breadcrumbs i{
+    color: #999;
+}
+
+.breadcrumbs a{
+    color: #999;
+}
+
+.breadcrumbs a:hover,
+.breadcrumbs a:hover i{
+    text-decoration: none;
+    color: #666 !important;
+}
+
+/* Footer */
+
+.footer-menu{
+    background: #1a1717;
+}
+
+.footer-menu a{
+    color: #666 !important;
+}
+
+.footer-menu a:hover{
+	color: #999 !important;
+}
+
+/* Archived Article */
+
+@media (min-width: 0px) {
+    .archive-article h2{
+        color: #22b7ea;
+    }
+    
+    .archive-article--right a:hover,
+    .archive-article--right a:hover h2{
+        text-decoration: none;
+        color: #0D94C3;
+    }
+}
+
+.archive-article-h1{
+    line-height: 1.5em;
+    color: #444;
+}
+
+/* Page Navi */
+
+.wp-pagenavi .nextpostslink{
+    background: #0bc9eb;
+}
+
+.wp-pagenavi .nextpostslink:hover{
+    background: #0D94C3;
+}
+
+.wp-pagenavi a{
+    color: #0D94C3 !important;
+}
+
+.m-nav-prev{
+    color: #666;
+    background: #DDD;
+}
+
+.m-nav-next{
+    color: #FFF;
+    background: #0bc9eb;
+}
+
+/* Article */
+
+.single-content-h1{
+    color: #0D94C3;
+}
+
+.article-footer--right h3{
+	color: #0d94c3;
+}
+
+.article-footer-box:hover h3,
+.article-footer-box:hover a h3,
+.article-footer--right a:hover{
+    color: #0d6e90 !important;
+    text-decoration: none;
+}
+
+/* FAQs */
+
+.page-faq-box--title{
+    background: #0bc9eb;
+    color: #FFF;
+}
+
+/* Side Recents */
+
+@media (min-width: 0px) {
+    .side-recent--box{
+        margin-bottom: 15px;
+    }
+}
+
+@media (min-width: 970px) {
+    .side-recent--box{
+        margin-bottom: 15px;
+    }
+}
+
+.side-recent h2{
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.side-recent--box h3{
+    margin-top: 0;
+    padding: 7px 10px 9px 10px;
+    background: #0bc9eb;
+    color: #FFF;
+    margin-bottom: 0;
+}
+
+.side-recent--box a:hover{
+    text-decoration: none;
+}
+
+.side-recent--box a:hover h3{
+    color: #FFF;
+    background: #0cbbda;
+}
+
+.side-recent--box img{
+	width: 100%;
+}
+
+/* Headline 4 */
+
+.headline4 .so-widget-sow-headline .sow-headline-container h3.sow-headline{
+    color: #f7931e;
+}
+
+/* Loop 1 */
+
+.loop1{
+	background: #0bc9eb;
+}
+
+.loop1 h2,
+.loop1 h2 a{
+	color: #FFF;
+}
+
+.loop1 h2:hover,
+.loop1 h2 a:hover{
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.33);
+}
+
+/* Contact 1 */
+
+.contact1,
+.contact1 .so-widget-sow-contact-form form{
+    background: #0bc9eb;
+    color: #FFF;
+}
+
+.contact1 .so-widget-sow-contact-form h3{
+    color: #FFF;
+    background: #0D94C3;
+}
+
+/* Product */
+
+.prd-buy a.prd-buy-main:hover{
+    background: #f36009;
+}
+
+a.prd-buy-main{
+    background: #ff6c14;
+    color: #FFF;
+}
+
+/* Product Box */
+
+.product-box h3 a{
+    color: #0D94C3;
+}
+
+.product-box h3 a:hover{
+    color: #444;
+}
+
+.product-box--right div{
+    color: #c71a2a;
+}
+
+.product-box--right__button{
+    background: #0bc9eb;
+    color: #FFF;
+}
+
+.product-box--right__button:hover{
+    background: #0ebbda;
+    color: #FFF;
+}
+
+/* Loop 4 */
+
+.loop4:hover a{
+    color: #0D94C3;
+}
+
+/* Side Service */
+
+.side-service-box h2 a{
+	color: #FFF;
+	background: #0D94C3;
+}
+
+.side-service-box:hover h2 a{
+    text-decoration: none;
+    background: #0a8ab7;
+}
+
+
+
+

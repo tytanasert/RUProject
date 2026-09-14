@@ -1,0 +1,104 @@
+;(function($){
+  $('body').on('click',"#subscribenewsletter",function(){ 
+   
+    var formAction = $(this).closest('form').attr('action');
+    var formId = $(this).closest('form').attr('id');
+    var formMethod = $(this).closest('form').attr('method');
+    var _this = $(this);
+    //var form_data = $("#"+formId).serialize();
+    var form_data = new FormData($("#"+formId)[0]);
+    $('.error-msg').text('');
+    _this.prop('disabled',false);
+    //return false;
+    var flag = true;
+    $("form#"+formId+" :input").each(function(){
+          var input = $(this); 
+
+          if($(this).val()=='' && $(this).attr('required')=='required'){
+
+            flag = false;
+            $( this ).css( "border-color",'#EE7356' );
+            
+
+          }else if($(this).attr('id')=='email'){
+
+              if( !validateEmail($(this).val())) { 
+                $( this ).next('#text_error').text( "Enter valid email address." ).addClass('error');
+                $( this ).css( "border-color",'#EE7356' );
+                flag = false;
+                
+              }else{
+                $( this ).next('#text_error').text( "" );
+                $( this ).css( "border-color",'' );
+              }
+          }else if($(this).attr('id')=='name'){
+            var regex = /^[a-z\d\-_\s]+$/i;
+            if(!regex.test($(this).val())){
+                flag = false;
+                $( this ).css( "border-color",'#EE7356' );
+                $( this ).next('#text_error').text( "Enter alphanumeric value only." ).addClass('error');;
+                
+            }else{
+                $( this ).next('#text_error').text( "" );
+              }
+
+          }else if($(this).attr('id')=='number'){
+            var regex = /^[0-9]*$/;
+            if(!regex.test($(this).val())){
+                flag = false;
+                $( this ).next('#text_error').text( "Enter numeric value only." ).addClass('error');;
+                $( this ).css( "border-color",'#EE7356' );
+            }else{
+                $( this ).next('#text_error').text( "" );
+              }
+
+          }
+
+    });
+
+    if(flag){
+
+      $.ajax({
+        url: formAction,
+        type:formMethod,
+        data:form_data,
+        headers : {
+          '_token' : window.Laravel.csrfToken,
+          'X-CSRF-TOKEN' : window.Laravel.csrfToken,
+        },
+        //prevent jQuery from converting your FormData into a string
+        processData: false, 
+         //jQuery does not add a Content-Type header for you
+        contentType: false,
+        success:function(result){  
+            var response = jQuery.parseJSON(result); 
+    
+            if(response.status=='unsuccess'){         
+                $.each(response.message, function(key,val){
+                    $('#'+formId+' input[name='+key+']').siblings('p').text(val);
+                })
+                _this.prop('disabled',false);
+                return false;                    
+           }else{
+                swal({                 
+                  type: response.status,
+                  title: response.message,
+                  showConfirmButton: true,                  
+                }).then(function(isConfirm){
+                    // window.location.href = window.location.href;
+                },function(dismiss){
+                  //reeere
+                });
+           }
+        }
+      });
+    }
+  });
+
+})(jQuery);
+
+
+function validateEmail($email) {
+  var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+  return emailReg.test( $email );
+}

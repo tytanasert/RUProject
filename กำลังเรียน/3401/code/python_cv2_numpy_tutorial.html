@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python + OpenCV + NumPy: ลดนอยส์และแยกตัวอักษร</title>
+  <style>
+    :root {
+      --bg: #f5f3ef;
+      --ink: #1e1f24;
+      --muted: #5c5d66;
+      --card: #fffdf8;
+      --line: #d6d1c7;
+      --accent: #005f73;
+      --accent-2: #ca6702;
+      --ok: #2a9d8f;
+      --danger: #bb3e03;
+      --shadow: 0 16px 40px rgba(30, 31, 36, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "IBM Plex Sans Thai", "Sarabun", "Noto Sans Thai", sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(0, 95, 115, 0.08), transparent 38%),
+        radial-gradient(circle at 88% 18%, rgba(202, 103, 2, 0.08), transparent 32%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    .wrap {
+      width: min(1100px, 92vw);
+      margin: 0 auto;
+      padding: 24px 0 48px;
+    }
+
+    .hero {
+      border: 1px solid var(--line);
+      background: linear-gradient(130deg, #fffdf8 0%, #f8f2e8 100%);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin-top: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      right: -90px;
+      top: -80px;
+      background: radial-gradient(circle, rgba(0, 95, 115, 0.16), transparent 72%);
+      pointer-events: none;
+    }
+
+    h1, h2, h3 {
+      font-family: "Mitr", "Noto Sans Thai", sans-serif;
+      line-height: 1.3;
+      margin: 0 0 10px;
+    }
+
+    h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); }
+    h2 {
+      margin-top: 22px;
+      font-size: clamp(1.2rem, 2.6vw, 1.7rem);
+      color: var(--accent);
+    }
+    h3 {
+      margin-top: 18px;
+      font-size: 1.15rem;
+      color: #2d3142;
+    }
+
+    p { margin: 8px 0; color: #262730; }
+    .lead {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 70ch;
+    }
+
+    .pill-row {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: #374151;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 0.92rem;
+    }
+
+    .grid {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      grid-column: span 12;
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .card.half { grid-column: span 6; }
+
+    @media (max-width: 900px) {
+      .card.half { grid-column: span 12; }
+    }
+
+    pre {
+      margin: 10px 0 0;
+      padding: 14px;
+      border-radius: 12px;
+      background: #141720;
+      color: #f8f8f2;
+      overflow-x: auto;
+      border: 1px solid #1d2433;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    code {
+      font-family: "JetBrains Mono", "Fira Code", monospace;
+    }
+
+    ul, ol {
+      margin: 8px 0 0 22px;
+      padding: 0;
+    }
+
+    li { margin-bottom: 6px; }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      color: #fff;
+      background: var(--accent-2);
+      border-radius: 8px;
+      padding: 3px 8px;
+      margin-bottom: 8px;
+    }
+
+    .warn {
+      border-left: 5px solid var(--danger);
+      background: #fff1ea;
+      padding: 10px 12px;
+      border-radius: 10px;
+      color: #672100;
+      margin-top: 10px;
+    }
+
+    .ok {
+      border-left: 5px solid var(--ok);
+      background: #effcf8;
+      padding: 10px 12px;
+      border-radius: 10px;
+      color: #0f513f;
+      margin-top: 10px;
+    }
+
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+      align-items: center;
+    }
+
+    .node {
+      border: 1px solid var(--line);
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .arrow { color: #6b7280; }
+
+    footer {
+      margin-top: 18px;
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>คู่มือสอน Python + OpenCV + NumPy</h1>
+      <p class="lead">หัวข้อเน้น: <strong>การลดนอยส์ (Noise Reduction)</strong> และ <strong>การแยกตัวอักษรออกจากภาพ (Character Segmentation)</strong> สำหรับงานประมวลผลภาพเบื้องต้นถึงระดับใช้งานจริง</p>
+      <div class="pill-row">
+        <span class="pill">Python 3.x</span>
+        <span class="pill">opencv-python</span>
+        <span class="pill">NumPy</span>
+        <span class="pill">Matplotlib (optional)</span>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="card half">
+        <span class="tag">1) เตรียมเครื่องมือ</span>
+        <h2>ติดตั้งและ Import</h2>
+        <pre><code>pip install opencv-python numpy matplotlib</code></pre>
+        <pre><code>import cv2
+import numpy as np
+import matplotlib.pyplot as plt</code></pre>
+        <div class="ok">เคล็ดลับ: OpenCV อ่านภาพเป็น BGR ถ้าจะแสดงด้วย Matplotlib ควรแปลงเป็น RGB ก่อน</div>
+      </section>
+
+      <section class="card half">
+        <span class="tag">2) พื้นฐานภาพ</span>
+        <h2>โครงสร้างข้อมูลภาพ</h2>
+        <ul>
+          <li>ภาพสี: <code>(H, W, 3)</code> ชนิดข้อมูลมักเป็น <code>uint8</code></li>
+          <li>ภาพเทา: <code>(H, W)</code></li>
+          <li>ค่าพิกเซลอยู่ช่วง 0 ถึง 255</li>
+        </ul>
+        <pre><code>img = cv2.imread("images/lena_color_256.tif", cv2.IMREAD_COLOR)
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+print(img.shape, img.dtype)
+print(gray.shape, gray.dtype)</code></pre>
+      </section>
+
+      <section class="card">
+        <span class="tag">3) ลดนอยส์</span>
+        <h2>เทคนิค Denoising ยอดนิยม</h2>
+        <h3>3.1 Gaussian Blur</h3>
+        <p>เหมาะกับนอยส์ทั่วไป ภาพจะนุ่มขึ้นเล็กน้อย</p>
+        <pre><code>denoise_gauss = cv2.GaussianBlur(gray, (5, 5), 0)</code></pre>
+
+        <h3>3.2 Median Blur</h3>
+        <p>เหมาะมากกับ Salt-and-Pepper noise และช่วยคงขอบได้ดีกว่า Gaussian ในหลายกรณี</p>
+        <pre><code>denoise_median = cv2.medianBlur(gray, 5)</code></pre>
+
+        <h3>3.3 Bilateral Filter</h3>
+        <p>ลดนอยส์และพยายามรักษาขอบภาพ (แต่ช้ากว่า)</p>
+        <pre><code>denoise_bilateral = cv2.bilateralFilter(gray, d=9, sigmaColor=75, sigmaSpace=75)</code></pre>
+
+        <h3>3.4 Non-Local Means</h3>
+        <p>คุณภาพดีในงานเอกสารบางประเภท</p>
+        <pre><code>denoise_nlm = cv2.fastNlMeansDenoising(gray, None, h=12, templateWindowSize=7, searchWindowSize=21)</code></pre>
+
+        <div class="warn">ข้อควรระวัง: ถ้า blur แรงเกินไป ตัวอักษรบางจะหายและ segmentation จะแย่ลง</div>
+      </section>
+
+      <section class="card">
+        <span class="tag">4) แยกตัวอักษร</span>
+        <h2>Workflow แยกตัวอักษรจากภาพเอกสาร</h2>
+        <div class="flow">
+          <span class="node">อ่านภาพ</span>
+          <span class="arrow">→</span>
+          <span class="node">แปลงเทา</span>
+          <span class="arrow">→</span>
+          <span class="node">ลดนอยส์</span>
+          <span class="arrow">→</span>
+          <span class="node">Threshold</span>
+          <span class="arrow">→</span>
+          <span class="node">Morphology</span>
+          <span class="arrow">→</span>
+          <span class="node">หา Contours</span>
+          <span class="arrow">→</span>
+          <span class="node">ครอปอักษร</span>
+        </div>
+
+        <pre><code>import cv2
+import numpy as np
+
+img = cv2.imread("images/text_sample.png", cv2.IMREAD_COLOR)
+if img is None:
+    raise FileNotFoundError("ไม่พบไฟล์ images/text_sample.png")
+
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# 1) ลดนอยส์
+gray_blur = cv2.medianBlur(gray, 3)
+
+# 2) แยกพื้นหลัง/ตัวอักษร
+# ใช้ THRESH_BINARY_INV เพราะต้องการให้ตัวอักษรเป็นสีขาวบนพื้นดำ
+bin_img = cv2.adaptiveThreshold(
+    gray_blur,
+    255,
+    cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
+    cv2.THRESH_BINARY_INV,
+    31,
+    12
+)
+
+# 3) Morphology เพื่อเชื่อมส่วนที่ขาด และลดจุดรบกวน
+kernel = np.ones((3, 3), np.uint8)
+clean = cv2.morphologyEx(bin_img, cv2.MORPH_OPEN, kernel, iterations=1)
+clean = cv2.morphologyEx(clean, cv2.MORPH_CLOSE, kernel, iterations=1)
+
+# 4) หา contour ของตัวอักษร
+contours, _ = cv2.findContours(clean, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+char_boxes = []
+for cnt in contours:
+    x, y, w, h = cv2.boundingRect(cnt)
+
+    # กรองกล่องเล็กมาก (noise)
+    if w < 5 or h < 8:
+        continue
+
+    char_boxes.append((x, y, w, h))
+
+# เรียงซ้ายไปขวา (เหมาะกับบรรทัดเดียว)
+char_boxes = sorted(char_boxes, key=lambda b: b[0])
+
+# 5) ครอปและบันทึกตัวอักษร
+for i, (x, y, w, h) in enumerate(char_boxes):
+    pad = 2
+    x1 = max(0, x - pad)
+    y1 = max(0, y - pad)
+    x2 = min(clean.shape[1], x + w + pad)
+    y2 = min(clean.shape[0], y + h + pad)
+
+    char_img = clean[y1:y2, x1:x2]
+    cv2.imwrite(f"char_{i:03d}.png", char_img)
+
+    # วาดกรอบบนภาพต้นฉบับเพื่อ debug
+    cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 1)
+
+cv2.imwrite("debug_boxes.png", img)
+cv2.imwrite("debug_binary.png", clean)
+print(f"เจอตัวอักษรทั้งหมด: {len(char_boxes)}")</code></pre>
+      </section>
+
+      <section class="card half">
+        <span class="tag">5) ปรับให้แม่นขึ้น</span>
+        <h2>เทคนิคเพิ่มคุณภาพ Segmentation</h2>
+        <ul>
+          <li>ปรับพารามิเตอร์ <code>adaptiveThreshold</code> เช่น <code>blockSize</code>, <code>C</code></li>
+          <li>ถ้าภาพเอียง ใช้ deskew ก่อน threshold</li>
+          <li>แบ่งเป็นบรรทัดก่อน แล้วค่อยตัดเป็นตัวอักษร</li>
+          <li>เพิ่มเงื่อนไขกรองกล่องด้วยสัดส่วน <code>w/h</code> และพื้นที่</li>
+          <li>ถ้าเป็นไทย อาจเจอวรรณยุกต์ลอย ควรใช้กฎรวมกล่องที่อยู่ใกล้กัน</li>
+        </ul>
+      </section>
+
+      <section class="card half">
+        <span class="tag">6) แบบฝึกหัด</span>
+        <h2>โจทย์สำหรับสอนในห้อง</h2>
+        <ol>
+          <li>ลองเทียบ Gaussian vs Median กับภาพเดียวกัน แล้วดูว่าตัวอักษรหายไปหรือไม่</li>
+          <li>ทดลองปรับ kernel morphology จาก 3x3 เป็น 2x2 และ 5x5</li>
+          <li>เพิ่มขั้นตอนรวมกล่องตัวอักษรที่ซ้อนกัน</li>
+          <li>แสดงผลเป็น subplot ด้วย Matplotlib: original / gray / binary / result</li>
+        </ol>
+        <pre><code>plt.figure(figsize=(12, 4))
+plt.subplot(1, 3, 1); plt.title("Gray"); plt.imshow(gray, cmap="gray"); plt.axis("off")
+plt.subplot(1, 3, 2); plt.title("Binary"); plt.imshow(clean, cmap="gray"); plt.axis("off")
+plt.subplot(1, 3, 3); plt.title("Boxes"); plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB)); plt.axis("off")
+plt.tight_layout(); plt.show()</code></pre>
+      </section>
+    </div>
+
+    <footer>
+      เอกสารนี้ออกแบบให้ใช้สอนหรือแจกนักศึกษาได้ทันที โดยสามารถคัดลอกโค้ดแต่ละบล็อกไปทดลองในไฟล์ Python หรือ Jupyter Notebook ได้
+    </footer>
+  </div>
+</body>
+</html>

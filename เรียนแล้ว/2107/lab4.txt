@@ -1,0 +1,63 @@
+ขั้นตอนการทอดไข่เจียว
+กำหนดเป้าหมาย
+	ต้องการได้ไข่เจียว
+สร้างความตั้งใจ
+	ทอดไข่เจียว
+กำหนดลำดับการกระทำ
+	หยิบไข่ออกจากตู้เย็น
+	ตอกไข่ใส่ชาม
+	ตีไข่ให้ไข่แดงกับไข่ขาวเข้าเป็นเนื้อเดียวกัน
+	จุดไฟ
+	ตั้งกระทะ
+	รอกระทะร้อน
+	เติมน้ำมัน
+	รอน้ำมันเดือด
+	เทไข่ลงไป
+	สังเกตสีของไข่เจียว
+	กลับด้านไข่เจียว
+	สังเกตสีของไข่เจียว
+	เอาไข่เจียวขึ้นมาใส่จาน
+รับรู้สถานะ
+	ตรวจสอบว่าไข่เจียวรสชาติเป็นอย่างไร สุกหรือยัง
+แปลสถานะของระบบ
+	ถ้าไข่เจียวยังไม่สุดแสดงว่าทอดเร็วเกินไป
+ประเมินสถานะเทียบกับความตั้งใจ
+	ถ้าไข่ที่ได้มีความสุก และเนื้อเข้ากันดี นั่นคือเราได้ไข่เจียวตามที่ต้องการ
+
+
+
+ข้อ2
+การสร้าง/บันทึก
+save, save as, new, delete, open file, close file, open copy of file
+
+การนำเสนอ
+table,character style, format paragraph, lay out document, position on page, plain text, bold text,
+italic text, underline, increase point size, decrease
+point size, change font, add footnote ,repaginate, add page break,
+insert graphic, insert index entry, print, print preview, page setup, view page
+
+เมลล์
+open mail, send mail
+
+การทำงาน การดำเนินการ
+quit, undo, ,cut, copy, paste, clear, , find word,
+change word, go to, go back, check spelling, view index, see table of contents, count words,
+renumber pages, repeat edit
+
+อื่นๆ
+glossary, preferences,
+ help
+ 
+ 
+ 
+ 
+ ข้อ3
+ 1 การแสดงความไว้อาลัยในการสูญเสีย
+ 2. แสดงสินค้าที่ได้มีการกดใส่ตะกร้าไว้
+ 3. แสดงการสามารถผ่อนชำระได้ 10 เดือน แบบ 0%
+ 4. การนำสินค้าเก่ามาแลกสินค้าใหม่
+ 5. การนำสินค้าตัวโชว์มาทำการลดราคา
+ 6. สินค้าที่กำลังมีกระแสในช่วงนี้
+ 7. สินค้าที่เป็นหมวดหมู่อิเล็กทรอนิกส์
+ 
+ 

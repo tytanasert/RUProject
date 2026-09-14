@@ -1,0 +1,408 @@
+//For Admin Section Customer Shipping Address
+function callForAjaxWithModel(ajax_url, resp_id) {
+    //alert(ajax_url+'==='+resp_id);return false;
+    $.ajax({
+        url:ajax_url,
+        method:'GET',
+        data:{call_type:'ajax_data'},
+        success:function(responce)
+        {
+            
+            $('#'+resp_id).modal('toggle');
+            if(responce){    
+                $('#contentSec').html(responce);
+            } 
+        }
+    });    
+}
+
+function callForAjax(ajax_url, resp_id) {
+    //alert(ajax_url+'==='+resp_id);return false;
+
+    $('#'+resp_id).text('');
+    
+    $.ajax({
+
+        url:ajax_url,
+        method:'GET',
+        data:{call_type:'ajax_data'},
+        success:function(responce)
+        {
+            //alert(resp_id);
+            if(responce){    
+                $('#'+resp_id).html(responce);
+            } 
+        }
+    });    
+}
+
+function callForAjaxPost(ajax_url, ajax_data, resp_id) {
+    //alert(ajax_url+'==='+resp_id+'==='+ajax_data);return false;
+    
+    ajax_data = JSON.parse(ajax_data);
+    ajax_data['_token']=window.Laravel.csrfToken;
+
+    //console.log(ajax_data);return;
+
+    $('#'+resp_id).text('');
+    
+    $.ajax({
+        url:ajax_url,
+        method:'POST',
+        data:ajax_data,
+        success:function(responce)
+        {
+            //alert(responce);
+            if(responce){                
+                $('#'+resp_id).html(responce);
+            } 
+        }
+    });    
+}
+
+function callForAjaxFormSubmit(ajax_url, form_id) {
+    //alert(ajax_url+'===='+form_id);
+    var form_data = $("#"+form_id).serialize();
+    $.ajax({
+        dataType:'json',
+        url:ajax_url,
+        method:'POST',
+        data:form_data,
+        success:function(response) {
+            //alert(responce.status);
+            //console.log(response);
+            if(response.status == 'success'){
+                location.reload();
+            }
+        }
+    });    
+}
+
+function callAjax(url, type, data, callback){
+  data['_token']= window.Laravel.csrfToken;
+  $.ajax({
+    url: url,
+    type:type,
+    headers : {'X-CSRF-TOKEN' : window.Laravel.csrfToken, '_token' : window.Laravel.csrfToken},
+    data: data,
+    success:function(result){  
+         callback(result);
+    }
+  });
+}
+
+function callAjaxRequest(url,type,data,callback){
+  data['_token']=window.Laravel.csrfToken;
+  //console.log(url);
+  $.ajax({
+    url: url,
+    type:type,
+    data:data,
+    success:function(result){  
+        callback(result);
+    }
+  })
+};
+
+function callAjaxUpload(url,type,data,callback){
+  data['_token']=window.Laravel.csrfToken;
+  $.ajax({
+    url: url,
+    type:type,
+    data:data,
+    processData: false, //prevent jQuery from converting your FormData into a string //required incase of file upload
+    contentType: false, //jQuery does not add a Content-Type header for you //required incase of file upload    
+    success:function(result){  
+         callback(result);
+    }
+  });
+}
+
+function createSlug(str) {
+    var url_str = str.toLowerCase().trim();
+    url_str = url_str.replace(/[^a-z0-9\s-]/g, ' ');   // replace invalid chars with spaces
+    url_str = url_str.replace(/[\s-]+/g, '-');  // replace multiple spaces or hyphens with a single hyphen
+    return url_str;
+}
+
+function updateIsdCode() {
+    var country = $('#country');
+    var country_id = country.val();
+    if(country_id > 0) {
+        var isd_code = country.find('option:selected').attr('isd_code');
+        $('.isd_code').val('+'+isd_code);
+    }
+}
+
+function switchLanguage(lang_id, lang_code, cur_url, ajax_url) {
+    //alert(lang_id+'==='+lang_code+'==='+cur_url+'==='+ajax_url);
+    showHideLoader('showLoader');
+    var data = {'lang_id':lang_id, 'lang_code':lang_code};
+    callAjax(ajax_url, 'post', data, function(result){
+        if(result == 'success') {
+            window.location=cur_url;
+        }
+    });
+}
+
+function switchCurrency(currency_id, ajax_url) {
+    showHideLoader('showLoader');
+    var data = {'currency_id':currency_id};
+    callAjax(ajax_url, 'post', data, function(result){
+        if(result == 'success') {
+            location.reload();
+        }
+    });
+}
+
+function updateData(ajax_url) {
+
+    $.ajax({
+        url:ajax_url,
+        method:'GET',
+    });    
+}
+
+$(document).on('keyup','.numeric_only',function(e){                        
+    if (/\D/g.test(this.value))
+    {
+        // Filter non-digits from input value.
+        this.value = this.value.replace(/\D/g, '');
+    }
+});
+
+// Below function is used to allow user to enter number only
+function isNumberKey(evt) {
+
+    var charCode = (evt.which) ? evt.which : event.keyCode;
+    
+    if (charCode!=46) {
+        
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+}
+
+function onOffCheckBox(ajax_url, msg_class) {
+    var data = {};
+    callAjax(ajax_url, 'get', data, function(result){
+        result = JSON.parse(result);
+        console.log(result);
+        if(result.status == 'success') {
+            $('.'+msg_class).prepend(result.msg);
+            $('.alert-success').fadeOut(3000, function(){
+                 $(this).remove();
+            });            
+        }
+    });
+}
+
+//show hide loader front
+function showHideLoader(strFlag) {
+    
+    if(strFlag === "showLoader") {
+        $("#showHideLoader").show();
+    } else if(strFlag === "hideLoader") {
+        $("#showHideLoader").hide();
+    }
+};
+
+//show hide loader admin
+function showHideLoaderAdmin(strFlag) {
+    
+    if(strFlag === "showLoader") {
+        $("#showHideLoader").removeClass('d-none');
+    } else if(strFlag === "hideLoader") {
+        $("#showHideLoader").addClass('d-none');
+    }
+};
+//View uploead image method Start
+//Read Url
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            jQuery(input).siblings('.upload-img').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+};
+
+// for single upload
+jQuery('body').on('change','.file-upload',function(){
+
+    var file = this.files[0];
+    var ext = file.name.split('.').pop().toLowerCase();
+    if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+        jQuery(this).val('');
+        jQuery(this).siblings('.upload-img').attr('src', '');
+        alert('invalid extension!');
+        return false;
+    }
+    
+    readURL(this);
+});     
+
+// for multiple file upload
+jQuery('body').on('change','#upload_multiple_image',function(e){
+
+    var files = e.target.files,
+        filesLength = files.length;
+    for (var i = 0; i < filesLength; i++) {
+        var f = files[i]
+        var fileReader = new FileReader();
+        fileReader.onload = (function(e) {
+            var file = e.target;
+            $("#image_preview").append('<img class="profile-pic" src="'+e.target.result+'" title="'+file.name+'" width="200"/>');
+        });
+        fileReader.readAsDataURL(f);
+    }
+});
+//View uploead image method End
+
+jQuery(document).ready(function(e){
+
+    //check email id exist in DB or not
+    $(document).on('blur', '.check_email_exist', function(){
+
+        $('.email_exist_error').text('');
+
+        var email_id = $(this).val();  
+        var ajax_url = typeof check_email_url!="undefined" ? check_email_url : "";
+        var data = {email_id:email_id};
+
+        var create_ac = 1;
+
+        //condition for guest checkout page
+        var create_ac_len = $('#create_account').length;
+        if(create_ac_len > 0) {
+            if($('#create_account').is(":checked") === false){
+                var create_ac = 0;
+            }
+        }
+        //condition for guest checkout page ended
+
+        if(email_id == '' || create_ac == 0) {
+            return ;
+        }
+
+        //alert(email_id+'===='+ajax_url);
+        callAjax(ajax_url, 'post', data, function(result){
+
+            var response = jQuery.parseJSON(result);
+            
+            if(response.status == 'exist'){  
+                $('.email_exist_error').html(response.msg);
+            } 
+        });
+    });
+    //check email id exist in DB or not ended  
+
+    // hide message 
+    $('.alert-success, .alert-danger').fadeOut(6000, function(){
+         $(this).remove();
+    });
+
+    // show uploaded file name
+    $('.fileupload input[type="file"]').change(function(e){
+            var fileName = e.target.files[0].name;  
+            $('.file-name').html(fileName);          
+    });
+    
+    /**for facebook return url if append #_=_*****/
+    if (window.location.hash == '#_=_') {
+        window.location.hash = ''; // for older browsers, leaves a # behind
+        history.pushState('', document.title, window.location.pathname); // nice and clean
+        e.preventDefault(); // no page reload
+    }         
+});
+
+//for increment decrement
+var Event_Type = 'ontouchend' in document ? 'touchend' : 'click';
+jQuery(document).on(Event_Type, '.spiner span, .spinergroup span', function(event) {
+    event.preventDefault();
+    //console.log(jQuery(this).parent().find('.quantity'));
+    var textVal = 0;
+    if (jQuery(this).hasClass('increase')) {
+        textVal = parseInt(jQuery(this).parent().find('.spinNum').val());
+        var maxVal = parseInt(jQuery(this).parent().find('.spinNum').attr('max'));
+        if (textVal < maxVal) {
+            textVal++;
+            jQuery(this).parent().find('.spinNum').val(textVal);
+        }
+    } else if (jQuery(this).hasClass('decrease')) {
+        textVal = parseInt(jQuery(this).parent().find('.spinNum').val());
+        var minVal = parseInt(jQuery(this).parent().find('.spinNum').attr('min'));
+        if (textVal > minVal) {
+            textVal--;
+            jQuery(this).parent().find('.spinNum').val(textVal);
+        }
+    }
+});
+
+$('body').on('blur','.spinNum',function(){
+
+    var input_val = $(this).val();
+    var input_max_val = $(this).attr('max');
+    var input_min_val = $(this).attr('min');    
+    
+    //alert(input_val+'==='+input_max_val);
+    if(input_val > input_max_val || input_val < input_min_val || isNaN(input_val)) {
+        $(this).val(input_max_val);
+    }
+});
+//for increment decrement ended
+
+function _toastrMessage(status, message) {
+    try {
+        Command: toastr[status](message);
+    }
+    catch (err) {
+        console.log;
+    };
+};
+
+function blogPinStatus(obj,pid){
+    var data = {blog_id:pid};
+    callAjaxRequest(blog_pin_url,"get",data,function(result){
+        
+        $(obj).toggleClass('pinIn');
+        _toastrMessage(result.status, result.message);
+    });
+};
+
+
+function addProductToWishlist(obj,pid){
+    var data = {product_id:pid};
+    callAjaxRequest(wishlist_url,"get",data,function(result){
+        var result = JSON.parse(result);
+        $(obj).toggleClass('active');
+        _toastrMessage(result.status, result.message);
+    });
+};
+
+function addProductToCompare(obj,pid){
+    var data = {product_id:pid};
+    callAjaxRequest(product_compare_url,"get",data,function(result){
+        
+        _toastrMessage(result.status, result.mesg);
+    });
+};
+
+function isMobileDevice() {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+};
+
+function mobileOrientation(){
+    if (window.matchMedia("(orientation: portrait)").matches) {
+       return 'p';
+    }
+
+    if (window.matchMedia("(orientation: landscape)").matches) {
+       return 'l';
+    }
+}

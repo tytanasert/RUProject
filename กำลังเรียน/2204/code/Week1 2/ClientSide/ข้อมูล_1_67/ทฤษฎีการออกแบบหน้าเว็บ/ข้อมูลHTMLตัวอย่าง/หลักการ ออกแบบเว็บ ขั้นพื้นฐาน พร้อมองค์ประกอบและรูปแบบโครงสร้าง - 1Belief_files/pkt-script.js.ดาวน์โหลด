@@ -1,0 +1,132 @@
+jQuery(function() {
+	jQuery( 'input, textarea' ).placeholder();
+});
+
+function dotdotdot(){
+	jQuery(document).ready(function() {
+		jQuery( '.dot-dot-dot' ).dotdotdot({
+			wrap		: 'letter',
+		});
+	});
+}
+
+jQuery(window).bind("load", function() {
+	dotdotdot();
+});
+
+function msieversion(){
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)){
+		jQuery(function() {
+    		jQuery('*').removeAttr('data-uk-scrollspy');
+    	});
+	}
+	return false;
+}
+msieversion();
+
+jQuery(document).ready(function() {
+	//<![CDATA[
+	  (function() {
+	    var shr = document.createElement('script');
+	    shr.setAttribute('data-cfasync', 'false');
+	    shr.src = '//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js';
+	    shr.type = 'text/javascript'; shr.async = 'true';
+	    shr.onload = shr.onreadystatechange = function() {
+	      var rs = this.readyState;
+	      if (rs && rs != 'complete' && rs != 'loaded') return;
+	      var site_id = 'dc4e21844ce54400c84c11a3969d0201';
+	      try { Shareaholic.init(site_id); } catch (e) {}
+	    };
+	    var s = document.getElementsByTagName('script')[0];
+	    s.parentNode.insertBefore(shr, s);
+	  })();
+	//]]>
+});
+
+function contact_send(){
+	cname 	= jQuery( '.cname' ).val();
+	cphone 	= jQuery( '.cphone' ).val();
+	csafe 	= jQuery( '.chid' ).val();
+	
+	jQuery( '.cname-r' ).hide();
+	jQuery( '.cphone-r' ).hide();
+	
+	if( ! csafe ){
+		if( ! cname ){
+			jQuery( '.cname-r' ).fadeIn();
+			jQuery( '.cname' ).focus();
+		}else if( ! cphone ){
+			jQuery( '.cphone-r' ).fadeIn();
+			jQuery( '.cphone' ).focus();
+		}else{
+			jQuery( '.contact2-title--submit button' ).prop( 'disabled', true );
+			jQuery( '.contact2-title--submit button' ).html( '<i class="uk-icon-refresh uk-icon-spin"></i>' );
+			
+			jQuery.ajax({
+				url				: ajaxurl,
+				method			: "POST",
+				data			: 
+				{
+					action		: 'contact_req',
+					cname		: cname,
+					cphone		: cphone,
+				},
+				success: function( data ) {
+					jQuery( '.contact2-fill' ).remove();
+					jQuery( '.contact2-success' ).fadeIn();
+				} 
+			});
+		}
+	}
+}
+
+function contact_new(){
+	cname 	= jQuery( '.svcontact-input-name' ).val();
+	cphone 	= jQuery( '.svcontact-input-tel' ).val();
+	cmsg 	= jQuery( '.svcontact-input-msg' ).val();
+	csafe 	= jQuery( '.svcontact-input-honey' ).val();
+	ctitle 		= jQuery( '.svcontact-input-title' ).val();
+	
+	jQuery( '.svcontact-input-name-r' ).hide();
+	jQuery( '.svcontact-input-tel-r' ).hide();
+	jQuery( '.svcontact-input-msg-r' ).hide();
+	
+	if( ! csafe ){
+		if( ! cname ){
+			jQuery( '.svcontact-input-name-r' ).fadeIn();
+			jQuery( '.svcontact-input-name' ).focus();
+		}else if( ! cphone ){
+			jQuery( '.svcontact-input-tel-r' ).fadeIn();
+			jQuery( '.svcontact-input-tel' ).focus();
+		}else if( ! cmsg ){
+			jQuery( '.svcontact-input-msg-r' ).fadeIn();
+			jQuery( '.svcontact-input-msg' ).focus();
+		}else{
+			jQuery( '.svcontact-box-submit' ).prop( 'disabled', true );
+			jQuery( '.svcontact-input-name' ).prop( 'disabled', true );
+			jQuery( '.svcontact-input-tel' ).prop( 'disabled', true );
+			jQuery( '.svcontact-box-submit' ).html( '<i class="uk-icon-refresh uk-icon-spin"></i>' );
+			
+			jQuery.ajax({
+				url				: ajaxurl,
+				method			: "POST",
+				data			: 
+				{
+					action		: 'contact_new',
+					cname		: cname,
+					cphone		: cphone,
+					cmsg			: cmsg,
+					ctitle			: ctitle,
+				},
+				success: function( data ) {
+					jQuery( '.svcontact-box-content--right-head_msg' ).remove();
+					jQuery( '.svcontact-box-content--right-head_btn' ).remove();
+					jQuery( '.svcontact-box-ss' ).fadeIn();
+				} 
+			});
+		}
+	}
+}

@@ -1,0 +1,1538 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+ using namespace std;
+main()
+{
+ int choice;  // variable for user input
+ int i;       // variable for loops and output
+ do // loop until a valid choice is entered
+  {
+  cout << "Which series do you wish to display?\n";
+  cout << "1 - Odd numbers from 1 to 30\n";
+  cout << "2 - Even numbers from 1 to 30\n";
+  cout << "3 - All numbers from 1 to 30\n";
+  cin >> choice;  // get choice from user
+  if ((choice < 1) || (choice > 3))
+   {  // if invalid entry, give message
+     cout << "Choice must be 1, 2, or 3\n";
+   }
+ } while ((choice < 1) || (choice > 3));
+ switch (choice)
+    {
+     case 1:
+       for (i = 1; i <= 30; i = i + 2)
+	    cout << i << ' ';
+       cout << endl;
+       break;
+     case 2:
+       for (i = 2; i <= 30; i = i + 2)
+	    cout << i << ' ';
+       cout << endl;
+       break;
+     case 3:
+       for (i = 1; i <= 30; i++)
+	     cout << i << ' ';
+       cout << endl;
+       break;
+    }
+  return 0;
+}
+
+
+
+
+//
+#include<iostream>
+using namespace std;
+void print_title (   );    // prototype for print_title function
+int main (  )
+ {
+     print_title(  );      // call to print_title
+     return 0;
+ } // end of main function
+
+// Function to print program title to screen.
+void print_title (  )
+ {
+  cout << "Tennis Tournament Scheduler Program\n";
+  cout << "By Jennifer Baker\n";
+ }
+
+
+//
+#include<iostream>
+using namespace std;
+void print_title( );    // prototype for print_title function
+void print_goodbye( );  // prototype for
+				// print_goodbye function
+int main()
+ {
+     print_title( );      // call to print_title
+    // insert the rest of the program here
+     print_goodbye( );
+     return 0;
+ } // end of main function
+// Function to print program title to screen.
+void print_title()
+ {
+  cout << "Tennis Tournament Scheduler Program\n";
+  cout << "By Jennifer Baker\n";
+ }
+
+// Function to print closing message to screen.
+void print_goodbye()
+ {
+  cout << "Thank you for using ";
+ cout << "the Tennis Tournament Scheduler.\n";
+ }
+
+//
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    cout<<"Hello World";
+
+    return 0;
+}
+
+//
+#include <iostream>
+
+using namespace std;
+
+char getmenuchoice(  ) ;		//prototype
+char getmenuchoice(  )
+{
+	      char select;
+ 	   cout << " Menu" << endl;
+          cout << "1. Add item to Cart " << endl;
+          cout << "2. Sell product " << endl;
+          cout << "3. Check stock " << endl;
+          cout << "4. End program" << endl;
+          cout << "Please select 1 / 2 / 3/ 4 =? ";
+          cin >> select;
+     return select;
+}
+int main ( ) {
+    char selectMenu ;
+    selectMenu = getmenuchoice(  );
+}
+
+
+//
+#include <iostream>
+
+using namespace std;
+
+struct product {
+   char id[10];
+   char name[30];
+   float cost;
+   int instock;
+};
+
+struct product  getNewProduct() {
+  struct product p;
+  cout << "New product: " << endl;
+  cout << "id =? ";  cin >> p.id;
+  cout << "name=? "; cin >> p.name; 
+  cout << "cost=? "; cin >> p.cost;
+  cout << "instock=? "; cin >> p.instock;
+  return p;	
+}
+int main() {
+   struct product newProduct = getNewProduct();
+  
+} 
+
+//
+def operate(a, b):
+    sum = a + b
+    diff = a - b
+    mul = a * b
+    div = a / b
+    return sum, diff, mul, div
+    
+n1 = 5
+n2 = 10
+sum, diff, mul, div = operate(n1, n2)
+print(
+    f"The sum is {sum}\n"
+    f"The difference is {diff}\n"
+    f"The multiplication gives {mul}\n"
+    f"The division gives {div}\n"
+)
+
+
+//
+#include <iostream>
+using namespace std;
+#include <stdio.h>
+int main() 
+{
+    int my_num = 7;
+    {
+        int new_num = 10;
+        int my_num = 17;
+        printf("1. new_num is %d\n",new_num);  
+        printf("2.my_num is %d\n",my_num);  
+    } 
+    printf("3.my_num is %d\n",my_num);  
+    {
+        int new_num;
+        my_num = 7*2;
+        printf("5. new_num is %d\n",new_num);  
+        printf("6.my_num is %d\n",my_num);  
+    }
+    printf("7.my_num is %d\n",my_num);    
+    return 0;
+}
+ 
+
+
+//
+#include <iostream>
+using namespace std;
+#include <stdio.h>
+int main() 
+{
+    int my_num = 7;
+    {
+        int new_num = 10;
+        int my_num = 17;
+        printf("1. new_num is %d\n",new_num);  
+        printf("2.my_num is %d\n",my_num);  
+    } 
+    printf("3.my_num is %d\n",my_num);  
+    {
+      //  int new_num;
+        my_num = 7*2;
+        printf("5. new_num is %d\n",new_num);  
+        printf("6.my_num is %d\n",my_num);  
+    }
+    printf("7.my_num is %d\n",my_num);    
+    return 0;
+}
+ 
+
+
+//
+#include <iostream>
+using namespace std;
+#include <stdio.h>
+int main() 
+{
+    int my_num = 7;
+    {
+        int new_num = 10;
+        int my_num = 17;
+        printf("1. new_num is %d\n",new_num);  
+        printf("2.my_num is %d\n",my_num);  
+    } 
+    printf("3.my_num is %d\n",my_num);  
+    {
+        int new_num;
+        my_num = 7*2;
+        printf("5. new_num is %d\n",new_num);  
+        printf("6.my_num is %d\n",my_num);  
+    }
+    printf("7.my_num is %d\n",my_num);    
+    return 0;
+}
+ 
+
+//
+#include <iostream>
+using namespace std;
+#include <stdio.h>
+int g =0 ;
+void f1() {
+    int f1_num;
+    g++;
+    printf("1. f1_g is %d\n",g);  
+    printf("2. f1_num is %d\n",f1_num);
+    f1_num++;
+}
+
+void f2() {
+    g += 10;
+    printf("3. f2_g is %d\n",g);  
+}
+
+void f3() {
+    int g = 100;
+    printf("4. f3_g is %d\n",g);  
+}
+int main() 
+{
+    printf("5. main_g is %d\n",g);  
+    f1();     
+    printf("6. main_g is %d\n",g);  
+    f2();     
+    printf("7. main_g is %d\n",g);  
+    f3();     
+    printf("8. main_g is %d\n",g);  
+    f1(); 
+    printf("9. main_g is %d\n",g);  
+ }
+
+//
+using namespace std;
+int  g = 10 , i = 3;    // global variable
+void myfunction();
+int main()
+ {
+    int j , k;    
+    j = 2;     
+    k = i + j;
+    cout <<"\n1.main k :" << k ;
+    cout <<"\n1.main i :" <<  i  ;
+    myfunction(  ); // call to myfunction
+    cout <<"\n2.main k :" << k ;
+    cout <<"\n2.main j :" << j ;
+    cout <<"\n2.main i :" <<  i  ;
+    g++;
+    myfunction(  ); // call to myfunction
+    cout <<"\n3.main k :" << k ;
+    cout <<"\n3.main j :" << j ;
+    cout <<"\n3.main g :" << g    ;
+    cout <<"\n4.main i :" <<  i  ;
+    return 0;
+ }
+void myfunction()
+ {
+  int k;      // local variable
+  int g = 40;
+  k = i++; g = k ;
+  cout <<"\nmyfunction k :" << k ;
+  cout <<"\nmyfunction g :" << g    ;
+} 
+
+
+//
+#include <iostream>
+
+using namespace std;
+ 
+int  g = 10 , i = 3;    // global variable
+void myfunction();
+int main()
+ {
+    int j , k;    // variables local to the main function
+    j = 2;     k = i + j;
+   cout << "before g = " << g <<" \n";
+   cout << "j = " << j << " and k = " << k << '\n';
+   cout << "i = " << i << " before the call to   myfunction.\n";
+   myfunction(  ); // call to myfunction
+   cout << "i = " << i << " after the call to myfunction.\n";
+   cout << "after g = " << g ;
+   return 0;
+ }
+void myfunction()
+ {
+  int l;      // local variable
+  int g = 40;
+  l = ++i;    // the variable i is accessible because i is global
+	      // the variable i is changed globally
+  cout << "l = " << l << '\n';
+  cout << "The variable l is lost as soon as myfunction exits.\n";
+
+  cout << "g (myfunction) = " << g <<" \n";
+  g = 80;
+ }
+
+//
+
+#include <iostream>
+
+using namespace std;
+ 
+int  i = 3;    // global variable
+void myfunction();
+int main()
+ {
+    int j , k;    // variables local to the main function
+    j = 2;
+    k = i + j;
+   cout << "j = " << j << " and k = " << k << '\n';
+   cout << "i = " << i << " before the call to myfunction.\n";
+   myfunction(  ); // call to myfunction
+   cout << "i = " << i << " after the call to myfunction.\n";
+   return 0;
+ }
+
+
+  void myfunction()
+ {
+  int l;      // local variable
+  l = ++i;    // the variable i is accessible because i is global
+	      // the variable i is changed globally
+  cout << "l = " << l << '\n';
+  cout << "The variable l is lost as soon as myfunction exits.\n";
+ }
+
+
+//
+#include <iostream>
+using namespace std;
+
+int getchoice() {
+ int choice;  // variable for user input
+ do // loop until a valid choice is entered
+  {
+    cout << "Which series do you wish to display?\n";
+    cout << "1 - Odd numbers from 1 to 30\n";
+    cout << "2 - Even numbers from 1 to 30\n";
+    cout << "3 - All numbers from 1 to 30\n";
+    cin >> choice;  // get choice from user
+    if ((choice < 1) || (choice > 3))
+     {  // if invalid entry, give message
+        cout << "Choice must be 1, 2, or 3\n";
+     }
+  } while ((choice < 1) || (choice > 3));
+  return choice;    
+}
+
+void printOdd() {
+   for (int i = 1; i <= 30; i = i + 2)
+	    cout << i << ' ';
+   cout << endl;   
+}
+
+void printEvent() {
+   for (int i = 2; i <= 30; i = i + 2)
+	    cout << i << ' ';
+   cout << endl;   
+}
+
+void printAll() {
+   for (int i = 2; i <= 30; i = i + 2)
+	    cout << i << ' ';
+   cout << endl;   
+}
+
+int main()
+{
+
+  int choice = getchoice();
+  switch (choice)
+    {
+     case 1:
+        printOdd();
+       break;
+     case 2:
+        printEvent() ;
+       break;
+     case 3:
+        printAll( );
+       break;
+    }
+  return 0;
+}
+
+//
+
+#include <iostream>
+
+using namespace std;
+ 
+void pass_val ( int x , double &y ) ;
+int main() 
+{ 
+    double y = 18.0 ;
+    int x = 3 ;  
+    pass_val ( x  , y );
+    cout << "\nx = " << x; 
+    cout << "\ny = " << y ;
+}
+void pass_val ( int l , double &y)
+{
+    l = l*2;  y = y+2;
+    cout << "\nl = " << l; 
+    cout << "\ny = " << y ;
+}
+
+
+//
+#include <iostream>
+
+using namespace std;
+ 
+void pass_val ( int x , double &y ) ;
+int main() 
+{ 
+    double y = 18.0 ;
+    int x = 3 ;  
+    pass_val ( x  , y );
+    cout << "\nx = " << x; 
+    cout << "\ny = " << y ;
+}
+void pass_val ( int l , double &y)
+{
+    l = l*2;  y = y+2;
+    cout << "\nl = " << l; 
+    cout << "\ny = " << y ;
+}
+
+//
+#include <iostream>
+
+using namespace std;
+ 
+void pass_val ( int  , double  ) ;
+int main() 
+{ 
+   double y = 18.0 ;
+   int x = 3 ;  
+   pass_val ( x   , y   );
+   cout << "\nx = " << x;
+   cout << "\ny = " << y;
+}
+void pass_val ( int  a  , double   b    )
+{
+    a = a*2;  b = b+2;
+   cout << "\na = " << a;
+   cout << "\nb = " << b;
+}
+
+
+//
+#include <iostream>
+
+using namespace std;
+ 
+
+void print_value( int j);
+int main()
+{
+  int i = 2;
+  cout << "Value before = " << i << endl ;
+  print_value(  i  );
+  cout << "Value after  = " << i << endl ;
+  return 0;
+}
+
+void print_value( int  j )
+{
+  cout << "value passed = " << j << endl ;
+  j = j*2 ;
+  cout << "value at end func = " << j << endl ;
+}
+
+//
+#include <iostream>
+
+using namespace std;
+ 
+
+void print_value( int j);
+int main()
+{
+  int i = 2;
+  cout << "Value before = " << i << endl ;
+  print_value(  i  );
+  cout << "Value after  = " << i << endl ; 
+   i  = 40;
+   print_value(  i  );
+  cout << "Value after  = " << i << endl ;
+  return 0;
+}
+void print_value( int  j )
+{
+  cout << "value passed = " << j << endl ;
+  j = j*2 ;
+  cout << "value at end func = " << j << endl ;
+}
+
+
+//
+#include <iostream>
+using namespace std;
+
+struct employee {
+ char name[100];
+ int age;
+ float salary;
+ char department[50];
+};
+ 
+// This function takes structure variable as parameter
+void printEmployeeDetails(struct employee emp){
+   cout << "\n*** Employee Details ***\n";
+   cout << "Name : " << emp.name << "\nAge : "<< emp.age << "\nSalary : "
+        << emp.salary << "\nDepartment : "<< emp.department;
+}
+int main(){
+   struct employee manager ;
+     
+   printf("Enter Name, Age, Salary and Department of Employee\n");
+   // Assigning data to members of structure variable
+   cin >> manager.name >> manager.age >> manager.salary >> manager.department;
+     
+   // Passing structure variable to function
+   printEmployeeDetails(manager);
+}
+
+//
+#include <stdio.h>
+
+void swapnum(int &i, int &j) {
+  int temp = i;
+  i = j;
+  j = temp;
+}
+
+int main(void) {
+  int a = 10;
+  int b = 20;
+
+  printf("before : A is %d and B is %d\n", a, b);
+  swapnum(a, b);
+  printf("after : A is %d and B is %d\n", a, b);
+  return 0;
+}
+
+
+//
+#include <iostream>
+using namespace std;
+
+struct employee {
+ char name[100];
+ int age;
+ float salary;
+ char department[50];
+};
+ 
+// This function takes structure variable as parameter
+void printEmployeeDetails(struct employee emp){
+   cout << "\n*** Employee Details ***\n";
+   cout << "Name : " << emp.name << "\nAge : "<< emp.age << "\nSalary : "
+        << emp.salary << "\nDepartment : "<< emp.department;
+}
+int main(){
+   struct employee manager ;
+     
+   printf("Enter Name, Age, Salary and Department of Employee\n");
+   // Assigning data to members of structure variable
+   cin >> manager.name >> manager.age >> manager.salary >> manager.department;
+     
+   // Passing structure variable to function
+   printEmployeeDetails(manager);
+}
+
+//
+
+#include <stdio.h>
+
+void swapnum(int &i, int &j) {
+  int temp = i;
+  i = j;
+  j = temp;
+}
+
+int main(void) {
+  int a = 10;
+  int b = 20;
+
+  printf("before : A is %d and B is %d\n", a, b);
+  swapnum(a, b);
+  printf("after : A is %d and B is %d\n", a, b);
+  return 0;
+}
+
+//
+#include <iostream>
+using namespace std;
+void updateArray( int data[ ],int n )
+{
+    for(int i = 0 ; i < n ; i++) {
+        data[i] = data[i]+1000; 
+    }    
+}
+void showarray( int data[ ],int n )
+{
+    for(int i = 0 ; i < n ; i++) {
+        cout << data[i] << ",";
+    }    
+}
+int main() {
+
+  int Roll_Number[5] = {100,101,102,103,104};
+
+    cout << "\nbefore update \n";
+    showarray(Roll_Number,5);
+    updateArray(Roll_Number,3);
+    cout << "\nafter update \n";
+    showarray(Roll_Number,5);
+}
+
+//
+#include <iostream>
+using namespace std;
+struct myStruct {
+    int x;
+    int y;
+} ;
+
+void swap( struct myStruct &ms)
+{
+    int temp = ms.x;
+    ms.x = ms.y;
+    ms.y = temp;
+}
+int main()
+{
+  struct myStruct ms = { 50,60 };
+  cout << "\n before swap main \n" ;
+  cout << " x = " << ms.x << "\ty = " <<ms.y;
+  swap( ms);
+  cout << "\n after swap main \n" ;
+  cout << " x = " << ms.x << "\ty = " <<ms.y;
+}
+
+//
+#include <iostream>
+using namespace std;
+void get_value( int &j );
+int main()
+{
+  int i = 0 ;
+  cout << "before call i = " << i << endl ;
+  get_value( i ) ;
+  cout << "after call i  = " << i << endl ;
+  return 0;
+}
+
+void get_value( int &j )
+{
+  cout << "value passed to func = " << j << endl ;
+  cin >> j ;
+  cout << "value at end func  = " << j << endl ;
+}
+
+
+//
+#include <iostream>
+using namespace std;
+void j2Mul ( int &j );
+int main()
+{
+  int i = 1 ;
+  cout << "before call i = " << i << endl ;
+   j2Mul( i ) ;
+  cout << "after call i  = " << i << endl ;
+   j2Mul( i ) ;
+  cout << "after call i  = " << i << endl ;
+  return 0;
+}
+
+void j2Mul ( int &j )
+{
+  cout << "value at being func  = " << j << endl ;
+   j  = j*20;
+  cout << "value at end func  = " << j << endl ;
+}
+
+//
+#include <iostream>
+#include <string.h>
+#include <iomanip>
+
+using namespace std;
+
+struct product {
+char id[10];
+char name[30];
+float cost;
+int instock;
+};
+
+int main()
+{
+struct product item[100];
+int n = 0;
+int select = -1;
+
+while (true)
+{
+
+cout << " Menu" << endl;
+cout << "1. Add item to Cart " << endl;
+cout << "2. Sell product " << endl;
+cout << "3. Check stock " << endl;
+cout << "4. End program" << endl;
+cout << "Please select 1 / 2 / 3/ 4 =? ";
+cin >> select;
+
+if (select == 4) {
+break;
+}
+switch (select)
+{
+case 1:
+{
+cout << "New product: " << endl;
+cout << "id =? ";  cin >> item[n].id;
+cout << "name=? "; cin >> item[n].name; 
+cout << "cost=? ";     cin >> item[n].cost;
+cout << "instock=? "; cin >> item[n].instock;
+n++;
+
+}
+break;
+case 2:
+{
+int i;
+int buyvolumn;
+char key[30];   //c++ allows declare in scope { }
+cout << "Input your product id:  ";
+cin >> key;
+cout << "Input your buy volumn:  ";
+cin >> buyvolumn;
+
+for (i = 0; i < n; i++) {
+if (strcmp(key, item[i].id) == 0)
+break;
+}
+cout << "name= " << item[i].name  << endl;
+cout << "cost=" << item[i].cost << endl;
+cout << "instock=" << item[i].instock << endl;
+cout << "Pay = " << item[i].cost* buyvolumn;
+item[i].instock -= buyvolumn;
+}
+break;
+case 3:
+{
+cout << setw(15) << "id";
+cout << setw(15) << "name";
+cout << setw(15) << "cost";
+cout << setw(15) << "instock" << endl;
+for (int i = 0; i < n; i++)
+{
+cout << setw(15) << item[i].id;
+cout << setw(15) << item[i].name  ;
+cout << setw(15) << item[i].cost;
+cout << setw(15) << item[i].instock << endl;
+}
+ 
+
+}
+break;
+}
+}
+
+
+return 0;
+}
+
+
+//
+#include <iostream>
+#include <string.h>
+#include <iomanip>
+
+using namespace std;
+
+struct product {
+char id[10];
+char name[30];
+float cost;
+int instock;
+};
+
+int main()
+{
+struct product item[100];
+int n = 0;
+int select = -1;
+
+while (true)
+{
+
+cout << " Menu" << endl;
+cout << "1. Add item to Cart " << endl;
+cout << "2. Sell product " << endl;
+cout << "3. Check stock " << endl;
+cout << "4. End program" << endl;
+cout << "Please select 1 / 2 / 3/ 4 =? ";
+cin >> select;
+
+if (select == 4) {
+break;
+}
+switch (select)
+{
+case 1:
+{
+cout << "New product: " << endl;
+cout << "id =? ";  cin >> item[n].id;
+cout << "name=? "; cin >> item[n].name; 
+cout << "cost=? ";     cin >> item[n].cost;
+cout << "instock=? "; cin >> item[n].instock;
+n++;
+
+}
+break;
+case 2:
+{
+int i;
+int buyvolumn;
+char key[30];   //c++ allows declare in scope { }
+cout << "Input your product id:  ";
+cin >> key;
+cout << "Input your buy volumn:  ";
+cin >> buyvolumn;
+
+for (i = 0; i < n; i++) {
+if (strcmp(key, item[i].id) == 0)
+break;
+}
+cout << "name= " << item[i].name  << endl;
+cout << "cost=" << item[i].cost << endl;
+cout << "instock=" << item[i].instock << endl;
+cout << "Pay = " << item[i].cost* buyvolumn;
+item[i].instock -= buyvolumn;
+}
+break;
+case 3:
+{
+cout << setw(15) << "id";
+cout << setw(15) << "name";
+cout << setw(15) << "cost";
+cout << setw(15) << "instock" << endl;
+for (int i = 0; i < n; i++)
+{
+cout << setw(15) << item[i].id;
+cout << setw(15) << item[i].name  ;
+cout << setw(15) << item[i].cost;
+cout << setw(15) << item[i].instock << endl;
+}
+ 
+
+}
+break;
+}
+}
+return 0;
+}
+
+//
+#include <iostream>
+#include <string.h>
+#include <iomanip>
+
+using namespace std;
+
+struct product {
+char id[10];
+char name[30];
+float cost;
+int instock;
+};
+
+int main()
+{
+struct product item[100];
+int n = 0;
+int select = -1;
+
+while (true)
+{
+
+cout << " Menu" << endl;
+cout << "1. Add item to Cart " << endl;
+cout << "2. Sell product " << endl;
+cout << "3. Check stock " << endl;
+cout << "4. End program" << endl;
+cout << "Please select 1 / 2 / 3/ 4 =? ";
+cin >> select;
+
+if (select == 4) {
+break;
+}
+switch (select)
+{
+case 1:
+{
+cout << "New product: " << endl;
+cout << "id =? ";  cin >> item[n].id;
+cout << "name=? "; cin >> item[n].name; 
+cout << "cost=? ";     cin >> item[n].cost;
+cout << "instock=? "; cin >> item[n].instock;
+n++;
+
+}
+break;
+case 2:
+{
+int i;
+int buyvolumn;
+char key[30];   //c++ allows declare in scope { }
+cout << "Input your product id:  ";
+cin >> key;
+cout << "Input your buy volumn:  ";
+cin >> buyvolumn;
+
+for (i = 0; i < n; i++) {
+if (strcmp(key, item[i].id) == 0)
+break;
+}
+cout << "name= " << item[i].name  << endl;
+cout << "cost=" << item[i].cost << endl;
+cout << "instock=" << item[i].instock << endl;
+cout << "Pay = " << item[i].cost* buyvolumn;
+item[i].instock -= buyvolumn;
+}
+break;
+case 3:
+{
+cout << setw(15) << "id";
+cout << setw(15) << "name";
+cout << setw(15) << "cost";
+cout << setw(15) << "instock" << endl;
+for (int i = 0; i < n; i++)
+{
+cout << setw(15) << item[i].id;
+cout << setw(15) << item[i].name  ;
+cout << setw(15) << item[i].cost;
+cout << setw(15) << item[i].instock << endl;
+}
+ 
+
+}
+break;
+}
+}
+return 0;
+}
+
+//
+
+#include <iostream>
+using namespace std;
+#include <math.h>
+
+int main(void)
+{
+   double x,y ,z ;
+   cout << "get x= "; cin >> x ;
+   cout << "get y= "; cin >> y ;
+   z = pow( x, y );
+   cout << "get x**y = " << z ;
+
+   return 0;
+}
+
+
+
+
+//
+#include <iostream>
+using namespace std;
+#include <ctype.h>
+int main()
+{
+ char c;
+ cout << "enter a characer :";
+ cin >>c;
+ if( isalpha(c) )
+  {
+    if( isupper(c) )
+     { cout << c << " is an upper leter\n"; }
+    else
+     { cout << c << " is an lower leter\n"; }
+  }
+  if( isdigit(c) )
+    { cout << c << " is a number\n"; }
+  if( !( isdigit(c) || isalpha(c) ) )
+    { cout << c << " is a number\n"; }
+}
+
+//
+#include <iostream>
+using namespace std;
+#include <math.h>
+
+void GetData ( float Z[  ] ,int n );
+float  Sum ( float Z[ ] , int n ) ;
+void  MultAry ( float W[ ] , float X[ ] , float Z[ ] , int n ) ;
+ 
+
+int main( )
+{
+    float  A [ 20 ] , B[ 20 ] ,T[20] ;
+    float  A_bar , B_bar ,corrAB , X , Y;
+    float  AB_bar , AA_bar , BB_bar ;
+   cout << " input DATA of  Matrix A \n"  ;
+   GetData ( A ,20 ) ;
+   cout << " input DATA of  Matrix B \n"  ;
+   GetData ( B , 20  ) ;
+    A_bar = Sum ( A  , 20 ) ;
+    B_bar   = Sum ( B , 20 );
+    MultAry( A , A , T , 20 )  ; AA_bar = Sum ( T, 20 ) ;
+    MultAry(  B , B , T , 20 )  ; BB_bar = Sum ( T, 20 ) ;
+    MultAry( A , B , T , 20 )  ; AB_bar = Sum ( T, 20 ) ;
+
+    X   =  (20*AB_bar - A_bar*B_bar) ;
+    Y   = (  ( 20* (AA_bar - A_bar* A_bar) ) *
+                ( 20* (BB_bar - B_bar* B_bar) ) );
+    corrAB = X / sqrt ( Y ) ;
+  
+    cout << "\ncorr(A,B)"  <<  corrAB ;
+    
+    return 0;
+}
+
+
+
+
+///
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+ void GetData ( int Z [3 ] [3] )
+{
+   int i , j ;
+   
+    for (  i = 0 ; i < 3 ; i++ )  
+    {
+       for ( j = 0 ; j < 3 ; j++ )
+       {
+            //cout << " row = " << i << "column " << j ;
+            //cin >> Z[ i ] [ j ] ;
+	        // Get a random number
+             Z[ i ] [ j ] = rand()%10;
+             cout << setw(5) << Z[ i ] [ j ]  << "  ";
+        }
+      cout <<  endl;
+    }
+}
+
+void MultplyMatrix ( int W[ 3 ] [3 ],
+                     int X[3][3],int Z[3][3 ] )
+{
+    int i , j , k ,sum ;
+   for (  i = 0 ; i < 3 ; i++ )  
+    {
+        for ( j = 0 ; j < 3 ; j++ )
+        { 
+            sum = 0 ;
+             for ( k = 0 ; k < 3 ; k++ )
+             { 
+                 sum  =sum + W[ i ] [ k ] * X [ k ] [ j ] ;
+             } 
+            Z[ i ] [ j ] = sum ;
+        }
+   }
+}
+
+void PrintMatrix( int Z [3 ] [3] )
+{
+   int i , j ;
+    cout << "value of  Matrix C \n" ;
+   for (  i = 0 ; i < 3 ; i++ )  
+   {
+      for ( j = 0 ; j < 3 ; j++ )
+      {
+             cout << setw(5) << Z[ i ] [ j ]  << "  ";
+      }
+      cout <<  endl;
+   }
+}
+int main( )
+{
+    int  A[ 3 ] [ 3 ] ;
+    int  B[ 3 ] [3] ;
+    int  C[ 3 ] [ 3 ] ;
+    int  i , j   ;
+ 
+   cout << "input DATA of  Matrix A \n" ;
+   GetData ( A ) ;
+   cout << "input DATA of  Matrix B \n" ;
+   GetData ( B ) ;
+   MultplyMatrix ( A, B , C ) ;
+   PrintMatrix(C);
+}
+
+///
+
+#include <iostream>
+
+using namespace std;
+
+int getonedata() {
+    int i;
+    cout << " enter data : " ;
+    cin>> i;
+    return i;
+}
+int main()
+{
+    int x = getonedata();
+    return 0;
+}
+
+//
+
+#include <iostream>
+
+using namespace std;
+
+void getonedata(int &i) {
+    cout << " enter data : " ;
+    cin>> i;
+}
+int main()
+{
+    int x;
+    getonedata(x);
+    return 0;
+}
+
+//
+
+#include <iostream>
+
+using namespace std;
+
+void getonedata(int &i) {
+    cout << " enter data : " ;
+    cin>> i;
+}
+int main()
+{
+    int x=30;
+    getonedata(x);
+    return 0;
+}
+
+//
+#include <iostream>
+
+using namespace std;
+
+void dosomething1(int x,int &i) {
+    i = x*3;
+
+}
+int main()
+{
+    int x=30;
+    dosomething1(x, x);
+    cout << x;
+    return 0;
+}
+
+//
+#include <iostream>
+
+using namespace std;
+
+void dosomething2(int &i) {
+    i = i*3;
+}
+int main()
+{
+    int x=30;
+    dosomething2(x);
+    cout << x;
+    return 0;
+}
+
+//
+#include <iostream>
+
+using namespace std;
+
+void dosomething3(int &i,int &j ,int &k) {
+    cin >> i;
+    cin >> j;
+    cin >> k;
+}
+int main()
+{
+    int a,b,c;
+    dosomething3(a,b,c);
+    return 0;
+}
+
+
+//
+#include <iostream>
+
+using namespace std;
+
+int dosomething4(int &i,int &j) {
+    cin >> i;
+    cin >> j;
+    cin >> k;
+    return k;
+}
+int main()
+{
+    int a,b,c;
+    c = dosomething4(a,b);
+    return 0;
+}
+
+
+
+ 
+#include <iostream>
+
+using namespace std;
+
+int dosomething5(int &i,int &j,int &k) {
+    cin >> i;
+    cin >> j;
+    cin >> k;
+    return 0;
+}
+int main()
+{
+    int a,b,c;
+    if(dosomething5(a,b,c)==0)
+      cout << "sucess";
+    else
+      cout << "fail";
+    return 0;
+}
+
+//
+#include <iostream>
+
+using namespace std;
+
+int *dosomething6() {
+    int x[5]={0};
+    for(int i=0 ; i < 5 ;i++)
+        x[i] = i;
+    return x;
+}
+int main()
+{
+    int x[5] ;
+    x = dosomething6();
+      for(int i=0 ; i < 5 ;i++)
+        cout << x[i] << " ";
+    return 0;
+}
+
+//
+#include <iostream>
+
+using namespace std;
+
+void dosomething7(int x[],int n) {
+    for(int i=0 ; i < n ;i++)
+        x[i] = i;
+}
+int main()
+{
+    int x[5] ;
+    dosomething7(x,5);
+      for(int i=0 ; i < 5 ;i++)
+        cout << x[i] << " ";
+    return 0;
+}
+
+//
+#include <iostream.h>
+
+//using namespace std;
+
+int *dosomething6() {
+    int x[5]={0};
+    for(int i=0 ; i < 5 ;i++)
+        x[i] = i;
+    return x;
+}
+int main()
+{
+    int *x;
+    x = dosomething6();
+      for(int i=0 ; i < 5 ;i++)
+        cout << x[i] << " ";
+    return 0;
+}
+
+
+//
+#include <iostream>
+#include <string.h>
+#include <iomanip>
+
+using namespace std;
+
+struct person {
+  char id[5];
+  char name[30];
+  char addrs[50];
+  float deposit;
+};
+int displaymenu()
+{
+    int choice;
+    do {
+    cout << "1.open acc" << endl;
+    cout << "2.deposit acc" << endl;
+    cout << "3.widthdraw acc" << endl;
+    cout << "4.compond interest acc" << endl;
+    cout << "5.reports " << endl;
+    cout << "6.quit" << endl;
+    cin >> choice;
+    }while( (choice >=1 && choice << 5) == false );
+    return choice;
+}
+
+int checkaccExist(char id[5],int n,struct person p[])
+{ //0..n-1 found,-1=not found
+    for(int i=0; i< n ; i++) {
+        if( strcmp( id, p[i].id)==0) {
+            return i;
+        }
+    }
+    return -1;
+}
+int opennewacc(char id[5],
+   float deposit,char name[], char addrs[],
+   int &n,struct person p[])
+{
+     int res = checkaccExist(id,n,p); //0..n-1 found,-1=not found
+    if( res >=0) {
+        return 0;
+    }
+    /*
+struct person {
+  char id[5];
+  char name[30];
+  char addrs[50];
+  float deposit;
+}    
+    */
+    strcpy( p[n].id, id );
+    strcpy( p[n].name, name );
+    strcpy( p[n].addrs, addrs );
+    p[n].deposit = deposit;
+    n++;
+    return 1;
+//1 success
+//0 not success
+}
+int deposit(char id[5],float m,int n,struct person p[]) {
+//1 success
+//0 not success
+    int idex = checkaccExist(id,n,p); //0..n-1 found,-1=not found
+    if( idex < 0) {
+        return 0;
+    }
+    p[idex].deposit += m;
+return 0;
+}
+
+int widthdraw(char id[5],float m,int n,struct person p[]) {
+//1 success
+//0 not success
+    int idex = checkaccExist(id,n,p); //0..n-1 found,-1=not found
+    if( idex < 0) {
+        return 0;
+    }
+    if(p[idex].deposit -m < 100 ) {
+        return 0;
+    }
+    p[idex].deposit -= m;
+    return 1;
+}
+void compondinterest( float rate,int n,struct person p[]) {
+}
+
+void report(  int n,struct person p[]) {
+    for(int i = 0; i < n ; i++) {
+        cout << "id : " << setw(10) ; 
+        cout << p[i].id << setw(10) ;
+        cout << "name : " << setw(10) ;
+        cout << p[i].name << setw(10) ;
+        cout << "addrs : " << setw(10) ;
+        cout << p[i].addrs << setw(10) ;
+        cout << "deposit : " << setw(10) ;
+        cout << p[i].deposit<< setw(10) ;
+        cout << endl;
+    }
+}
+
+
+int main()
+{
+    struct person customer[500];
+    int n=0;
+    int choice;
+    char id[5];
+    float _deposit,_widthdraw;
+    char name[100];
+    char addrs[100];
+    int res;
+    choice = displaymenu();
+    while(choice!=6) {
+        switch(choice){
+            case 1:
+            /*
+			int opennewacc(char id[5],
+			   float deposit,char name[], char addrs[]
+			   int &n,struct person p[])            
+            */
+                    cout << "id : "; 
+                    cin >> id;
+                    cout << "name : "; 
+                    cin >> name;
+                    cout << "addrs : "; 
+                    cin >> addrs;
+                    cout << "deposit : "; 
+                    cin >> _deposit;
+                    res =opennewacc(id,
+                            _deposit,
+                            name,  
+                            addrs,
+                            n,
+                           customer);
+                    if(res==0) {
+                        cout << "accout duplicate error" << endl;
+                    }
+                    break;
+            case 2:
+            /*
+				int deposit(char id[5],float m,int n,struct person p[])
+            */
+                    cout << "id : "; 
+                    cin >> id;    
+                    cout << "deposit : "; 
+                    cin >> _deposit;                    
+                    res = deposit(id,_deposit,n,customer);
+                    
+                    break;
+            case 3:
+            /*
+            int widthdraw(char id[5],float m,int n,struct person p[])
+            */
+                    cout << "id : "; 
+                    cin >> id;    
+                    cout << "widthdraw : "; 
+                    cin >> _widthdraw;                    
+                    res = widthdraw(id,_widthdraw,n,customer);
+                    break;
+            case 4:
+                    break;
+                    
+            case 5:
+                    report( n,customer );
+                    break;
+        }
+        choice = displaymenu();
+    }
+
+    return 0;
+}
